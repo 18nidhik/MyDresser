@@ -24,6 +24,8 @@
 		C34438E51F61073700B9037F /* PreviousTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438E41F61073700B9037F /* PreviousTableViewCell.swift */; };
 		C34438E71F610A0500B9037F /* NewDressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438E61F610A0500B9037F /* NewDressViewController.swift */; };
 		C34438ED1F611EB300B9037F /* AttireOfTheDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438EC1F611EB300B9037F /* AttireOfTheDayViewController.swift */; };
+		C37C2E681F629A80007F9812 /* CasualDress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C2E671F629A80007F9812 /* CasualDress.swift */; };
+		C3E3CF391F61376800FF15BD /* SuggestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E3CF381F61376800FF15BD /* SuggestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		C34438E41F61073700B9037F /* PreviousTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousTableViewCell.swift; sourceTree = "<group>"; };
 		C34438E61F610A0500B9037F /* NewDressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDressViewController.swift; sourceTree = "<group>"; };
 		C34438EC1F611EB300B9037F /* AttireOfTheDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttireOfTheDayViewController.swift; sourceTree = "<group>"; };
+		C37C2E671F629A80007F9812 /* CasualDress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasualDress.swift; sourceTree = "<group>"; };
+		C3E3CF381F61376800FF15BD /* SuggestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,11 +125,13 @@
 				C334EB6C1F6033A20051652D /* ChooseOrSuggestTableViewController.swift */,
 				C334EB6E1F60341A0051652D /* ChooseOrSuggestTableViewCell.swift */,
 				C34438DC1F60FFD400B9037F /* CategoryViewController.swift */,
+				C3E3CF381F61376800FF15BD /* SuggestViewController.swift */,
 				C34438DE1F6102A300B9037F /* PreviousOrNewTableViewController.swift */,
 				C34438E01F6102C000B9037F /* PreviousOrNewTableViewCell.swift */,
 				C34438E21F61071200B9037F /* PreviousTableViewController.swift */,
 				C34438E41F61073700B9037F /* PreviousTableViewCell.swift */,
 				C34438E61F610A0500B9037F /* NewDressViewController.swift */,
+				C37C2E671F629A80007F9812 /* CasualDress.swift */,
 				C34438EC1F611EB300B9037F /* AttireOfTheDayViewController.swift */,
 				C309DD291F60210900936864 /* Main.storyboard */,
 				C309DD271F60210900936864 /* ViewController.swift */,
@@ -293,12 +299,14 @@
 				C34438DF1F6102A300B9037F /* PreviousOrNewTableViewController.swift in Sources */,
 				C309DD281F60210900936864 /* ViewController.swift in Sources */,
 				C309DD2E1F60210900936864 /* MyDresser.xcdatamodeld in Sources */,
+				C37C2E681F629A80007F9812 /* CasualDress.swift in Sources */,
 				C334EB6D1F6033A20051652D /* ChooseOrSuggestTableViewController.swift in Sources */,
 				C34438ED1F611EB300B9037F /* AttireOfTheDayViewController.swift in Sources */,
 				C34438E11F6102C000B9037F /* PreviousOrNewTableViewCell.swift in Sources */,
 				C34438E71F610A0500B9037F /* NewDressViewController.swift in Sources */,
 				C34438E51F61073700B9037F /* PreviousTableViewCell.swift in Sources */,
 				C309DD261F60210900936864 /* AppDelegate.swift in Sources */,
+				C3E3CF391F61376800FF15BD /* SuggestViewController.swift in Sources */,
 				C34438DD1F60FFD400B9037F /* CategoryViewController.swift in Sources */,
 				C334EB6F1F60341A0051652D /* ChooseOrSuggestTableViewCell.swift in Sources */,
 			);
@@ -455,10 +463,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyDresser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yml.MyDresser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -467,10 +477,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyDresser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yml.MyDresser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

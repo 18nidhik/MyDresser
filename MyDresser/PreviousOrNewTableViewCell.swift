@@ -11,6 +11,16 @@ import UIKit
 class PreviousOrNewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var previousOrNewLabel: UILabel!
+    var buttonObj : (() -> Void)? = nil
+    
+    @IBAction func previousOrNewSelect(_ sender: Any) {
+        
+        if let btnAction = self.buttonObj
+        {
+            btnAction()
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,8 +32,5 @@ class PreviousOrNewTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
-    @IBAction func previousOrNewSelect(_ sender: Any) {
-    }
-
+   
 }

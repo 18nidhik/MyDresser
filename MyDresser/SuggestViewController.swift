@@ -1,5 +1,5 @@
 //
-//  AttireOfTheDayViewController.swift
+//  SuggestViewController.swift
 //  MyDresser
 //
 //  Created by Shrinidhi K on 07/09/17.
@@ -8,17 +8,14 @@
 
 import UIKit
 
-class AttireOfTheDayViewController: UIViewController {
+class SuggestViewController: UIViewController {
 
-    @IBOutlet weak var bottomAttireImage: UIImageView!
-
-    @IBOutlet weak var topAttireImage: UIImageView!
-    var topImage: UIImage? = nil
-    var bottomImage: UIImage? = nil
+    @IBOutlet weak var suggestedTopImage: UIImageView!
+    @IBOutlet weak var suggestedBottomImage: UIImageView!
+    var categoryOfDress:DressCategory = .other
     override func viewDidLoad() {
         super.viewDidLoad()
-        topAttireImage.image = topImage
-        bottomAttireImage.image = bottomImage
+
         // Do any additional setup after loading the view.
     }
 
@@ -27,10 +24,14 @@ class AttireOfTheDayViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func attireSelected(_ sender: Any) {
+    
+    
+    @IBAction func suggestedDressOk(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
     }
-
+   
+    @IBAction func suggestedDressReject(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)    }
     /*
     // MARK: - Navigation
 

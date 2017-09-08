@@ -12,6 +12,13 @@ class PreviousTableViewCell: UITableViewCell {
     
     @IBOutlet weak var topPreviousImage: UIImageView!
     @IBOutlet weak var bottomPreviousImage: UIImageView!
+    var buttonObj : (() -> Void)? = nil
+    @IBAction func previousDressSelected(_ sender: Any) {
+        if let btnAction = self.buttonObj
+        {
+            btnAction()
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +32,6 @@ class PreviousTableViewCell: UITableViewCell {
     }
     
     
-    @IBAction func previousDressSelected(_ sender: Any) {
-    }
+    
 
 }
