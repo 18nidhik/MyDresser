@@ -28,7 +28,7 @@ class AttireOfTheDayViewController: UIViewController {
     }
     
     @IBAction func attireSelected(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popToViewController((navigationController?.viewControllers[1])!, animated: true)
     }
 
     /*

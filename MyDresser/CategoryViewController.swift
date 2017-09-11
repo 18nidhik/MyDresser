@@ -12,8 +12,9 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var categoryChosen: UILabel!
-    var chooseOrSuggest = ""
+    var chooseOrSuggest:String = ""
     let categories = ["formal","casual","ethnic"]
+    var userId: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +50,13 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
             previousOrNewTVC.categoryOfDress = choosedCategory
                 }
             }
-            
+            previousOrNewTVC.userId = self.userId
             self.navigationController?.pushViewController(previousOrNewTVC, animated: true)
         }
         else if chooseOrSuggest == "Suggest Me Something"{
             let suggestVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"SuggestController") as! SuggestViewController
             suggestVC.categoryOfDress = DressCategory(rawValue: categoryChosen.text!)!
+            suggestVC.userId = self.userId
             self.navigationController?.pushViewController(suggestVC, animated: true)
         }
         

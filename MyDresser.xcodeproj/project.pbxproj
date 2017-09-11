@@ -28,6 +28,8 @@
 		C34CA1681F6542F400150238 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C34CA1671F6542F400150238 /* GoogleService-Info.plist */; };
 		C37C2E681F629A80007F9812 /* CasualDress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C2E671F629A80007F9812 /* CasualDress.swift */; };
 		C3E3CF391F61376800FF15BD /* SuggestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E3CF381F61376800FF15BD /* SuggestViewController.swift */; };
+		C3EEE50C1F669F90001D074C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEE50B1F669F90001D074C /* LoginViewController.swift */; };
+		C3EEE50E1F669FAB001D074C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEE50D1F669FAB001D074C /* SignupViewController.swift */; };
 		CAED55853D2541D0B7A225DD /* Pods_MyDresser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F9BB7EFC5158496D9DA997 /* Pods_MyDresser.framework */; };
 		F64342DC2CECC43227B52E9A /* Pods_MyDresserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB2118E6D709F75683F0EEF /* Pods_MyDresserTests.framework */; };
 /* End PBXBuildFile section */
@@ -84,6 +86,8 @@
 		C34CA1671F6542F400150238 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C37C2E671F629A80007F9812 /* CasualDress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasualDress.swift; sourceTree = "<group>"; };
 		C3E3CF381F61376800FF15BD /* SuggestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestViewController.swift; sourceTree = "<group>"; };
+		C3EEE50B1F669F90001D074C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C3EEE50D1F669FAB001D074C /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		CBB2118E6D709F75683F0EEF /* Pods_MyDresserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDresserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -151,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				C309DD251F60210900936864 /* AppDelegate.swift */,
+				C3EEE50B1F669F90001D074C /* LoginViewController.swift */,
+				C3EEE50D1F669FAB001D074C /* SignupViewController.swift */,
 				C334EB6C1F6033A20051652D /* ChooseOrSuggestTableViewController.swift */,
 				C334EB6E1F60341A0051652D /* ChooseOrSuggestTableViewCell.swift */,
 				C34438DC1F60FFD400B9037F /* CategoryViewController.swift */,
@@ -384,12 +390,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyDresser/Pods-MyDresser-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -505,12 +513,14 @@
 				C34438E31F61071200B9037F /* PreviousTableViewController.swift in Sources */,
 				C34438DF1F6102A300B9037F /* PreviousOrNewTableViewController.swift in Sources */,
 				C309DD281F60210900936864 /* ViewController.swift in Sources */,
+				C3EEE50C1F669F90001D074C /* LoginViewController.swift in Sources */,
 				C309DD2E1F60210900936864 /* MyDresser.xcdatamodeld in Sources */,
 				C37C2E681F629A80007F9812 /* CasualDress.swift in Sources */,
 				C334EB6D1F6033A20051652D /* ChooseOrSuggestTableViewController.swift in Sources */,
 				C34438ED1F611EB300B9037F /* AttireOfTheDayViewController.swift in Sources */,
 				C34438E11F6102C000B9037F /* PreviousOrNewTableViewCell.swift in Sources */,
 				C34438E71F610A0500B9037F /* NewDressViewController.swift in Sources */,
+				C3EEE50E1F669FAB001D074C /* SignupViewController.swift in Sources */,
 				C34438E51F61073700B9037F /* PreviousTableViewCell.swift in Sources */,
 				C309DD261F60210900936864 /* AppDelegate.swift in Sources */,
 				C3E3CF391F61376800FF15BD /* SuggestViewController.swift in Sources */,

@@ -14,6 +14,7 @@ import FirebaseDatabase
 
 class PreviousTableViewController: UITableViewController {
     var categoryOfDress: DressCategory = .other
+    var userId: String = ""
     var urlsOfTop :[NSURL] = []
     var urlsOfBottom :[NSURL] = []
     var databaseref : DatabaseReference?
@@ -26,7 +27,7 @@ class PreviousTableViewController: UITableViewController {
 
         detailsOfDresses = []
         keys = []
-        databaseref?.child("dresses").observeSingleEvent(of: .value, with: {(snapshot) in
+        databaseref?.child(userId).observeSingleEvent(of: .value, with: {(snapshot) in
             if let dictionary = snapshot.value as? NSDictionary {
                 for(key,value) in dictionary{
                     detailsOfDresses.append(value as! [String : AnyObject] )
@@ -143,6 +144,7 @@ class PreviousTableViewController: UITableViewController {
         newDressVC.categoryOfPreviousDress  = categoryOfDress
         newDressVC.topUrlOfPreviousDress = urlsOfTop[(indexPath?.row)!]
         newDressVC.bottomUrlOfPreviousDress = urlsOfBottom[(indexPath?.row)!]
+        newDressVC.userId = self.userId
         self.navigationController?.pushViewController(newDressVC, animated: true)
     }
 }

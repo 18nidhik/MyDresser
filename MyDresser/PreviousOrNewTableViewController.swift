@@ -11,6 +11,7 @@ import UIKit
 class PreviousOrNewTableViewController: UITableViewController {
     var categoryOfDress:DressCategory = .other
     var optionsToChoose = ["Select from previously worn dresses","Select a new dress"]
+    var userId: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,11 +48,13 @@ class PreviousOrNewTableViewController: UITableViewController {
             {   if indexPath.row == 0{
                     let previousVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"PreviousController") as! PreviousTableViewController
                     previousVC.categoryOfDress = self.categoryOfDress
+                previousVC.userId = self.userId
                     self.navigationController?.pushViewController(previousVC, animated: true)
                 }
                 else if indexPath.row == 1{
                     let newDressVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"NewDressController") as! NewDressViewController
                     newDressVC.categoryOfDress = self.categoryOfDress
+                newDressVC.userId = self.userId
                     self.navigationController?.pushViewController(newDressVC, animated: true)
                 }
                 

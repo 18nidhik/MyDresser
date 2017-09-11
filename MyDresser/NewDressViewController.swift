@@ -19,6 +19,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     var dbnumber = 0
     var localTopUrl : NSURL?
     var localBottomUrl : NSURL?
+    var userId: String = ""
     var categoryOfDress:DressCategory = .other
     var categoryOfPreviousDress :DressCategory = .other
     var topUrlOfPreviousDress: NSURL?
@@ -37,6 +38,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(userId)
         databaseref = Database.database().reference()
         if let topUrl = topUrlOfPreviousDress{
             localTopUrl = topUrl
@@ -193,7 +195,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     
          detailsOfDresses = []
         keys = []
-        databaseref?.child("dresses").observeSingleEvent(of: .value, with: {(snapshot) in
+         databaseref?.child(self.userId).observeSingleEvent(of: .value, with: {(snapshot) in
 //            print(snapshot)
 //            print("now values")
 //            print(snapshot.value)
@@ -242,13 +244,13 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate, UIImagePi
                             }
                         }
             if indexOfDress == -1{
-                self.databaseref?.child("dresses").childByAutoId().setValue(["top": self.localTopUrl?.absoluteString!, "bottom": self.localBottomUrl?.absoluteString!, "category": self.categoryOfDress.rawValue, "numberOfTimesWorn": 1 ])
+                self.databaseref?.child(self.userId).childByAutoId().setValue(["top": self.localTopUrl?.absoluteString!, "bottom": self.localBottomUrl?.absoluteString!, "category": self.categoryOfDress.rawValue, "numberOfTimesWorn": 1 ])
                 print("save now")
             }
             else{
                 print("update now")
                 self.dbnumber += 1
-               let childRef = self.databaseref?.child("dresses").child(keys[indexOfDress] as! String)
+               let childRef = self.databaseref?.child(self.userId).child(keys[indexOfDress] as! String)
                 childRef?.updateChildValues(["numberOfTimesWorn": self.dbnumber])
                 //update
                 // dresses[indexOfDress].numberOfTimesWorn += 1
@@ -328,7 +330,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate, UIImagePi
 //        })
         
 
-          self.navigationController?.popToRootViewController(animated: true)
+          self.navigationController?.popToViewController((navigationController?.viewControllers[1])!, animated: true)
     }
     /*
     // MARK: - Navigation

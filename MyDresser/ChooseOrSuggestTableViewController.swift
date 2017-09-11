@@ -10,10 +10,11 @@ import UIKit
 
 class ChooseOrSuggestTableViewController: UITableViewController {
     var optionsToChoose = ["Choose my Attire","Suggest Me Something"]
-
+    var userUniqueId: String = ""
+    var userId :String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        userId = userUniqueId
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -48,6 +49,7 @@ class ChooseOrSuggestTableViewController: UITableViewController {
             {
                 let categoryVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"CategoryViewController") as! CategoryViewController
                 categoryVC.chooseOrSuggest = self.optionsToChoose[indexPath.row]
+                categoryVC.userId = self.userId
                 self.navigationController?.pushViewController(categoryVC, animated: true)
 
         }

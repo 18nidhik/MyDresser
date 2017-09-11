@@ -10,6 +10,7 @@ target 'MyDresser' do
 
 pod 'Firebase/Core'
 pod ‘Firebase/Database’
+pod ‘Firebase/Auth’
 
   target 'MyDresserTests' do
     inherit! :search_paths

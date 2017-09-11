@@ -15,6 +15,7 @@ class SuggestViewController: UIViewController {
 
     @IBOutlet weak var suggestedTopImage: UIImageView!
     @IBOutlet weak var suggestedBottomImage: UIImageView!
+    var userId: String = ""
     var categoryOfDress:DressCategory = .other
     var suggestedDress = Dress()
     var databaseref : DatabaseReference?
@@ -31,7 +32,7 @@ class SuggestViewController: UIViewController {
         
         detailsOfDresses = []
         keys = []
-        databaseref?.child("dresses").observeSingleEvent(of: .value, with: {(snapshot) in
+        databaseref?.child(userId).observeSingleEvent(of: .value, with: {(snapshot) in
             if let dictionary = snapshot.value as? NSDictionary {
                 for(key,value) in dictionary{
                     detailsOfDresses.append(value as! [String : AnyObject] )
@@ -122,13 +123,14 @@ class SuggestViewController: UIViewController {
     @IBAction func suggestedDressOk(_ sender: Any) {
         print("update now")
         updateNumber += 1
-        let childRef = self.databaseref?.child("dresses").child(keys[indexOfSuggestedDress] as! String)
+        let childRef = self.databaseref?.child(userId).child(keys[indexOfSuggestedDress] as! String)
         childRef?.updateChildValues(["numberOfTimesWorn": self.updateNumber])
-        self.navigationController?.popToRootViewController(animated: true)
+         self.navigationController?.popToViewController((navigationController?.viewControllers[1])!, animated: true)
     }
    
     @IBAction func suggestedDressReject(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)    }
+         self.navigationController?.popToViewController((navigationController?.viewControllers[1])!, animated: true)
+    }
     /*
     // MARK: - Navigation
 
