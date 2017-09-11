@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1A39AB165348CFB623AC46 /* Pods_MyDresserUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1AEB6789BBEBBDD58FAFC5 /* Pods_MyDresserUITests.framework */; };
 		C309DD261F60210900936864 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309DD251F60210900936864 /* AppDelegate.swift */; };
 		C309DD281F60210900936864 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309DD271F60210900936864 /* ViewController.swift */; };
 		C309DD2B1F60210900936864 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C309DD291F60210900936864 /* Main.storyboard */; };
@@ -24,8 +25,11 @@
 		C34438E51F61073700B9037F /* PreviousTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438E41F61073700B9037F /* PreviousTableViewCell.swift */; };
 		C34438E71F610A0500B9037F /* NewDressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438E61F610A0500B9037F /* NewDressViewController.swift */; };
 		C34438ED1F611EB300B9037F /* AttireOfTheDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438EC1F611EB300B9037F /* AttireOfTheDayViewController.swift */; };
+		C34CA1681F6542F400150238 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C34CA1671F6542F400150238 /* GoogleService-Info.plist */; };
 		C37C2E681F629A80007F9812 /* CasualDress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C2E671F629A80007F9812 /* CasualDress.swift */; };
 		C3E3CF391F61376800FF15BD /* SuggestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E3CF381F61376800FF15BD /* SuggestViewController.swift */; };
+		CAED55853D2541D0B7A225DD /* Pods_MyDresser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F9BB7EFC5158496D9DA997 /* Pods_MyDresser.framework */; };
+		F64342DC2CECC43227B52E9A /* Pods_MyDresserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB2118E6D709F75683F0EEF /* Pods_MyDresserTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26A002681FE9AEE7D2DE7ABC /* Pods-MyDresserTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDresserTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDresserTests/Pods-MyDresserTests.release.xcconfig"; sourceTree = "<group>"; };
+		7DAD68EC26472172EAC50C24 /* Pods-MyDresserUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDresserUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDresserUITests/Pods-MyDresserUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7E1AEB6789BBEBBDD58FAFC5 /* Pods_MyDresserUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDresserUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F5F59CCB43B1C2535B4928E /* Pods-MyDresser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDresser.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDresser/Pods-MyDresser.release.xcconfig"; sourceTree = "<group>"; };
+		97B5414066E299FAA4FA27A3 /* Pods-MyDresser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDresser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDresser/Pods-MyDresser.debug.xcconfig"; sourceTree = "<group>"; };
+		97F9BB7EFC5158496D9DA997 /* Pods_MyDresser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDresser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADCBCC20D4A3C38DBFA0BCF5 /* Pods-MyDresserUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDresserUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDresserUITests/Pods-MyDresserUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B21DDE107AA08B8A9D85291E /* Pods-MyDresserTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDresserTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDresserTests/Pods-MyDresserTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C309DD221F60210900936864 /* MyDresser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDresser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C309DD251F60210900936864 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C309DD271F60210900936864 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,8 +81,10 @@
 		C34438E41F61073700B9037F /* PreviousTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousTableViewCell.swift; sourceTree = "<group>"; };
 		C34438E61F610A0500B9037F /* NewDressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDressViewController.swift; sourceTree = "<group>"; };
 		C34438EC1F611EB300B9037F /* AttireOfTheDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttireOfTheDayViewController.swift; sourceTree = "<group>"; };
+		C34CA1671F6542F400150238 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C37C2E671F629A80007F9812 /* CasualDress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasualDress.swift; sourceTree = "<group>"; };
 		C3E3CF381F61376800FF15BD /* SuggestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestViewController.swift; sourceTree = "<group>"; };
+		CBB2118E6D709F75683F0EEF /* Pods_MyDresserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDresserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAED55853D2541D0B7A225DD /* Pods_MyDresser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64342DC2CECC43227B52E9A /* Pods_MyDresserTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,12 +108,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B1A39AB165348CFB623AC46 /* Pods_MyDresserUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09E646405ED777CD13ED00B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97F9BB7EFC5158496D9DA997 /* Pods_MyDresser.framework */,
+				CBB2118E6D709F75683F0EEF /* Pods_MyDresserTests.framework */,
+				7E1AEB6789BBEBBDD58FAFC5 /* Pods_MyDresserUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C309DD191F60210900936864 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +132,8 @@
 				C309DD3C1F60210900936864 /* MyDresserTests */,
 				C309DD471F60210900936864 /* MyDresserUITests */,
 				C309DD231F60210900936864 /* Products */,
+				FD1A3184D033434D27818497 /* Pods */,
+				09E646405ED777CD13ED00B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +168,7 @@
 				C309DD311F60210900936864 /* LaunchScreen.storyboard */,
 				C309DD341F60210900936864 /* Info.plist */,
 				C309DD2C1F60210900936864 /* MyDresser.xcdatamodeld */,
+				C34CA1671F6542F400150238 /* GoogleService-Info.plist */,
 			);
 			path = MyDresser;
 			sourceTree = "<group>";
@@ -161,6 +191,19 @@
 			path = MyDresserUITests;
 			sourceTree = "<group>";
 		};
+		FD1A3184D033434D27818497 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				97B5414066E299FAA4FA27A3 /* Pods-MyDresser.debug.xcconfig */,
+				7F5F59CCB43B1C2535B4928E /* Pods-MyDresser.release.xcconfig */,
+				B21DDE107AA08B8A9D85291E /* Pods-MyDresserTests.debug.xcconfig */,
+				26A002681FE9AEE7D2DE7ABC /* Pods-MyDresserTests.release.xcconfig */,
+				ADCBCC20D4A3C38DBFA0BCF5 /* Pods-MyDresserUITests.debug.xcconfig */,
+				7DAD68EC26472172EAC50C24 /* Pods-MyDresserUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,9 +211,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C309DD4D1F60210900936864 /* Build configuration list for PBXNativeTarget "MyDresser" */;
 			buildPhases = (
+				3E42F1E06600BF736A7AA5EA /* [CP] Check Pods Manifest.lock */,
 				C309DD1E1F60210900936864 /* Sources */,
 				C309DD1F1F60210900936864 /* Frameworks */,
 				C309DD201F60210900936864 /* Resources */,
+				72BA1A25A4158D190F678CB0 /* [CP] Embed Pods Frameworks */,
+				7F427E8A314920B85339959C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -185,9 +231,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C309DD501F60210900936864 /* Build configuration list for PBXNativeTarget "MyDresserTests" */;
 			buildPhases = (
+				F65EE3D84C13CBCA7D77A0B9 /* [CP] Check Pods Manifest.lock */,
 				C309DD351F60210900936864 /* Sources */,
 				C309DD361F60210900936864 /* Frameworks */,
 				C309DD371F60210900936864 /* Resources */,
+				672A38372785A044069A1516 /* [CP] Embed Pods Frameworks */,
+				DD969A95FDD125DB9453B180 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,9 +252,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C309DD531F60210900936864 /* Build configuration list for PBXNativeTarget "MyDresserUITests" */;
 			buildPhases = (
+				9F6BFF951F851162F4DA45DF /* [CP] Check Pods Manifest.lock */,
 				C309DD401F60210900936864 /* Sources */,
 				C309DD411F60210900936864 /* Frameworks */,
 				C309DD421F60210900936864 /* Resources */,
+				F056916BC9941D1B80155A05 /* [CP] Embed Pods Frameworks */,
+				BF6EA5E3A089198A85C112C5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -269,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C309DD331F60210900936864 /* LaunchScreen.storyboard in Resources */,
+				C34CA1681F6542F400150238 /* GoogleService-Info.plist in Resources */,
 				C309DD301F60210900936864 /* Assets.xcassets in Resources */,
 				C309DD2B1F60210900936864 /* Main.storyboard in Resources */,
 			);
@@ -289,6 +342,160 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E42F1E06600BF736A7AA5EA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyDresser-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		672A38372785A044069A1516 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDresserTests/Pods-MyDresserTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72BA1A25A4158D190F678CB0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MyDresser/Pods-MyDresser-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDresser/Pods-MyDresser-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F427E8A314920B85339959C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDresser/Pods-MyDresser-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F6BFF951F851162F4DA45DF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyDresserUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF6EA5E3A089198A85C112C5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDresserUITests/Pods-MyDresserUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD969A95FDD125DB9453B180 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDresserTests/Pods-MyDresserTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F056916BC9941D1B80155A05 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDresserUITests/Pods-MyDresserUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F65EE3D84C13CBCA7D77A0B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyDresserTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C309DD1E1F60210900936864 /* Sources */ = {
@@ -460,6 +667,7 @@
 		};
 		C309DD4E1F60210900936864 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97B5414066E299FAA4FA27A3 /* Pods-MyDresser.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyDresser/Info.plist;
@@ -474,6 +682,7 @@
 		};
 		C309DD4F1F60210900936864 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F5F59CCB43B1C2535B4928E /* Pods-MyDresser.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyDresser/Info.plist;
@@ -488,6 +697,7 @@
 		};
 		C309DD511F60210900936864 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B21DDE107AA08B8A9D85291E /* Pods-MyDresserTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -502,6 +712,7 @@
 		};
 		C309DD521F60210900936864 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26A002681FE9AEE7D2DE7ABC /* Pods-MyDresserTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -516,6 +727,7 @@
 		};
 		C309DD541F60210900936864 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADCBCC20D4A3C38DBFA0BCF5 /* Pods-MyDresserUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = MyDresserUITests/Info.plist;
@@ -529,6 +741,7 @@
 		};
 		C309DD551F60210900936864 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DAD68EC26472172EAC50C24 /* Pods-MyDresserUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = MyDresserUITests/Info.plist;

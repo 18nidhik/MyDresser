@@ -1,0 +1,6 @@
+framework module Pods_MyDresserTests {
+  umbrella header "Pods-MyDresserTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -8,14 +8,24 @@
 
 import UIKit
 import Photos
+import Firebase
+import FirebaseDatabase
 
 var dresses :[Dress] = []
+var keys :[Any] = []
 
+var detailsOfDresses:[[String: AnyObject]] = []
 class NewDressViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    var dbnumber = 0
     var localTopUrl : NSURL?
     var localBottomUrl : NSURL?
     var categoryOfDress:DressCategory = .other
+    var categoryOfPreviousDress :DressCategory = .other
+    var topUrlOfPreviousDress: NSURL?
+    var bottomUrlOfPreviousDress: NSURL?
+    var databaseref : DatabaseReference?
+    var databaseHandle :DatabaseHandle?
+
     
     @IBOutlet weak var newTopImage: UIImageView!
     @IBOutlet weak var newBottomImage: UIImageView!
@@ -27,6 +37,36 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        databaseref = Database.database().reference()
+        if let topUrl = topUrlOfPreviousDress{
+            localTopUrl = topUrl
+            categoryOfDress = categoryOfPreviousDress
+            let asset = PHAsset.fetchAssets(withALAssetURLs: [topUrl as URL], options: nil)
+                        guard let result = asset.firstObject else {
+                            return
+                        }
+                        let imageManager = PHImageManager.default()
+                        var imageData: Data? = nil
+                        imageManager.requestImageData(for: result, options: nil, resultHandler: { (data, string, orientation, dict) in
+                            imageData = data
+                            self.newTopImage.image = UIImage(data: imageData!)
+                        })
+
+        }
+        if let bottomUrl = bottomUrlOfPreviousDress{
+            localBottomUrl = bottomUrl
+            let asset = PHAsset.fetchAssets(withALAssetURLs: [bottomUrl as URL], options: nil)
+            guard let result = asset.firstObject else {
+                return
+            }
+            let imageManager = PHImageManager.default()
+            var imageData: Data? = nil
+            imageManager.requestImageData(for: result, options: nil, resultHandler: { (data, string, orientation, dict) in
+                imageData = data
+                self.newBottomImage.image = UIImage(data: imageData!)
+            })
+
+        }
         toptapGestureRecogniser.addTarget(self, action: #selector(NewDressViewController.tappedTopView))
         newTopImage.isUserInteractionEnabled = true
         newTopImage.addGestureRecognizer(toptapGestureRecogniser)
@@ -145,62 +185,149 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     }
     
     @IBAction func finaliseDressOK(_ sender: Any) {
-        //var indexOfDress = -1
+       var indexOfDress = -1
         let attireOfTheDayVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AttireOfTheDayController") as! AttireOfTheDayViewController
         attireOfTheDayVC.topImage = newTopImage.image
         attireOfTheDayVC.bottomImage = newBottomImage.image
-        if categoryOfDress == DressCategory.casual {
-            print("Casual")
-            var dress = Dress()
-            dress.top = localTopUrl!
-            dress.bottom = localBottomUrl!
-            dress.numberOfTimesWorn = 1
-            dress.categorty =  .casual
-            dresses.append(dress)
-            for item in dresses{
-                print("top is \(item.top)")
-                print("bottom is \(item.bottom)")
-                print("category is \(item.categorty)")
-                print("number is \(item.numberOfTimesWorn)")
-            }
-     }
-        else if categoryOfDress == DressCategory.formal {
-            print("Formal")
-            var dress = Dress()
-            dress.top = localTopUrl!
-            dress.bottom = localBottomUrl!
-            dress.numberOfTimesWorn = 1
-            dress.categorty =  .formal
-            dresses.append(dress)
-            for item in dresses{
-                print("top is \(item.top)")
-                print("bottom is \(item.bottom)")
-                print("category is \(item.categorty)")
-                print("number is \(item.numberOfTimesWorn)")
-            }
-
-
-        }
-        else if categoryOfDress == DressCategory.ethnic {
-            print("Ethnic")
-            var dress = Dress()
-            dress.top = localTopUrl!
-            dress.bottom = localBottomUrl!
-            dress.numberOfTimesWorn = 1
-            dress.categorty =  .ethnic
-            dresses.append(dress)
-            for item in dresses{
-                print("top is \(item.top)")
-                print("bottom is \(item.bottom)")
-                print("category is \(item.categorty)")
-                print("number is \(item.numberOfTimesWorn)")
+        
+    
+         detailsOfDresses = []
+        keys = []
+        databaseref?.child("dresses").observeSingleEvent(of: .value, with: {(snapshot) in
+//            print(snapshot)
+//            print("now values")
+//            print(snapshot.value)
+            
+            if let dictionary = snapshot.value as? NSDictionary {
+                for(key,value) in dictionary{
+                    detailsOfDresses.append(value as! [String : AnyObject] )
+                    keys.append(key)
+                }
+                print("first")
                 
+                for(index,values) in detailsOfDresses.enumerated(){
+                    print("index is \(index)")
+                    for(key,val) in values{
+                        print("\(key) s value is \(val)")
+                    }
+                }
+                
+                print("list of keys")
+                for key in keys{
+                    print(key)
+                }
+//                print("second")
+//                for(index,values) in detailsOfDresses.enumerated(){
+//                    print("index is \(index)")
+//                    for(key,val) in values{
+//                        print("\(key) s value is \(val)")
+//                    }
+//                }
+
             }
-        }
+            print("second")
+                            for(index,values) in detailsOfDresses.enumerated(){
+                                print("index is \(index)")
+                                for(key,val) in values{
+                                    print("\(key) s value is \(val)")
+                                }
+                            }
+            for(index,values) in detailsOfDresses.enumerated(){
+                            if values["category"] as! String == self.categoryOfDress.rawValue{
+                                if values["top"] as! String == self.localTopUrl?.absoluteString && values["bottom"] as! String == self.localBottomUrl?.absoluteString{
+                                    self.dbnumber = values["numberOfTimesWorn"] as! Int
+                                    indexOfDress = index
+                                    print("index is \(indexOfDress)")
+                                }
+                            }
+                        }
+            if indexOfDress == -1{
+                self.databaseref?.child("dresses").childByAutoId().setValue(["top": self.localTopUrl?.absoluteString!, "bottom": self.localBottomUrl?.absoluteString!, "category": self.categoryOfDress.rawValue, "numberOfTimesWorn": 1 ])
+                print("save now")
+            }
+            else{
+                print("update now")
+                self.dbnumber += 1
+               let childRef = self.databaseref?.child("dresses").child(keys[indexOfDress] as! String)
+                childRef?.updateChildValues(["numberOfTimesWorn": self.dbnumber])
+                //update
+                // dresses[indexOfDress].numberOfTimesWorn += 1
+            }
+
+
+
+
+            
+        })
+//        print("dress array")
+//         for(index,values) in detailsOfDresses.enumerated(){
+//            print("index is \(index)")
+//            var dress1 = Dress()
+//            let b = NSURL(string: values["bottom"] as! String)
+//            dress1.bottom = b!
+//            let t = NSURL(string: values["top"] as! String)
+//            dress1.top = t!
+//            var c = DressCategory(rawValue: values["category"] as! String)
+//            dress1.categorty = c!
+//            dress1.numberOfTimesWorn = values["numberOfTimesWorn"] as! Int
+//            dresses.append(dress1)
+//            }
+        
+//        for(index,values) in detailsOfDresses.enumerated(){
+//            if values["category"] as! String == categoryOfDress.rawValue{
+//                if values["top"] as! String == localTopUrl?.absoluteString && values["bottom"] as! String == localBottomUrl?.absoluteString{
+//                    indexOfDress = index
+//                }
+//            }
+//        }
+        
+
+//        for (index,dress) in dresses.enumerated(){
+//                if dress.categorty == categoryOfDress{
+//                if dress.top == localTopUrl && dress.bottom == localBottomUrl{
+//                    indexOfDress = index
+//                }
+//              }
+//            }
+        
+//            if indexOfDress == -1{
+//        databaseref?.child("dresses").childByAutoId().setValue(["top": localTopUrl?.absoluteString!, "bottom": localBottomUrl?.absoluteString!, "category": categoryOfDress.rawValue, "numberOfTimesWorn": 1 ])
+//        }
+//            else{
+//                //up[date
+//               // dresses[indexOfDress].numberOfTimesWorn += 1
+//            }
         self.navigationController?.pushViewController(attireOfTheDayVC, animated: true)
     }
 
     @IBAction func rejectDress(_ sender: Any) {
+       
+//     databaseref?.child("dresses").observeSingleEvent(of: .value, with: {(snapshot) in
+//            print(snapshot)
+//            print("now values")
+//            print(snapshot.value)
+//
+//                                if let dictionary = snapshot.value as? NSDictionary {
+//                            for(key,value) in dictionary{
+//                                //keys.append(key)
+//                                detailsOfDresses.append(value as! [String : AnyObject] )
+//                            }
+////                                    print("keys only")
+////                                    for key in keys{
+////                                        print("key")
+////                                    }
+//                                    print("values only")
+//                            for(index,values) in detailsOfDresses.enumerated(){
+//                                print("index is \(index)")
+//                                for(key,val) in values{
+//                                    print("\(key) s value is \(val)")
+//                                }
+//                            }
+//                 }
+//        
+//        })
+        
+
           self.navigationController?.popToRootViewController(animated: true)
     }
     /*
@@ -265,5 +392,90 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate, UIImagePi
 
 
  */
+    
+    
+    //                        let top = dictionary["top"] as? String
+    //                            print("top is")
+    //                            print(top!)
+    //                            print("Dictionary")
+    //                            for (key,value) in dictionary{
+    //                                detailsOfDresses.append(value as! [String : AnyObject])
+    //                            }
+
+    
+    
+    
+    //                            for (index,values) in detailsOfDresses{
+    //                                print("\(index) details are")
+    //                                for(key,value) in values{
+    //
+    //                                print( "\(key) s value is  \(value)")
+    //                                }
+    //                            }
+    // detailsOfDresses.append(dictionary as! [String : AnyObject] )
+    
+    
+    //                        print("details of dictionary")
+    //                        for (index,item) in detailsOfDresses.enumerated(){
+    //                            print("\(index) element is    ")
+    //                            for(key,value) in item{
+    //                                print("\(key) is \(value)")
+    //                            }
+    //                        }
+
+    //-------------------
+/*    //        databaseref?.child("dresses").queryOrderedByKey().observeSingleEvent(of: <#T##DataEventType#>, with: <#T##(DataSnapshot) -> Void#>)
+    databaseref?.child("dresses").observeSingleEvent(of: .value, with: {(snapshot) in
+    print(snapshot)
+    print("now values")
+    print(snapshot.value)
+    // snapshot.value
+    //            if let top = snapshot.value["top"] as? String{
+    //                print(top)
+    //            }
+    
+    //            if let dictionary = snapshot.value as? NSDictionary {
+    //            let top = dictionary["top"] as? String
+    //                print("top is")
+    //                print(top!)
+    //                print("Dictionary")
+    //                for (key,value) in dictionary{
+    //                    detailsOfDresses.append(value as! [String : AnyObject])
+    //                }
+    //   detailsOfDresses.append(dictionary )
+    //     }
+    //            print("details of dictionary")
+    //            for item in detailsOfDresses{
+    //                for(key,value) in item{
+    //                    print("\(key) is \(value)")
+    //                }
+    //            }
+    
+    })
+    //        databaseref?.child("dresses").observeSingleEvent(of: .value, with: { (snapshot) in
+    //            print(snapshot)
+    //            if let dictionary = snapshot.value as? [String: AnyObject] {
+    //          //  detailsOfDresses.setValuesForKeys(dictionary)
+    //                detailsOfDresses.append(dictionary)
+    //           // self.roomlist.append(meetingRoom)
+    //
+    //              }
+    //       }
+    //  .observe(.childAdded, with: { (snapshot) in
+    //            if let dictionary = snapshot.value as? [String: AnyObject] {
+    //                let meetingRoom = MeetingRoom()
+    //
+    //                meetingRoom.setValuesForKeys(dictionary)
+    //                self.roomlist.append(meetingRoom)
+    //                print(meetingRoom)
+    //                DispatchQueue.main.async(execute: {
+    //                    self.tableView.reloadData()
+    //                })
+    //            }
+    //            print(self.roomlist)
+    //            
+    //        })*/
+
+
 
 }
