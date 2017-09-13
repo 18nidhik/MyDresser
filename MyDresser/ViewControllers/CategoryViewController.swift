@@ -15,9 +15,12 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var chooseOrSuggest:String = ""
     let categories = ["formal","casual","ethnic"]
     var userId: String = ""
+    var newUser = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Select the category"
         categoryPicker.dataSource = self
         categoryPicker.delegate = self
 
@@ -43,24 +46,34 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
 
     @IBAction func goToNext(_ sender: Any) {
+        if let category = categoryChosen.text {
+            if category != ""{
+            print("category is \(category)")
         if chooseOrSuggest == "Choose my Attire"{
             let previousOrNewTVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"PreviousOrNewController") as! PreviousOrNewTableViewController
-            if let category = categoryChosen.text{
+          //  if let category = categoryChosen.text{
                 if let choosedCategory = DressCategory(rawValue: category) {
             previousOrNewTVC.categoryOfDress = choosedCategory
                 }
-            }
+         //   }
             previousOrNewTVC.userId = self.userId
+            previousOrNewTVC.newUser = self.newUser
             self.navigationController?.pushViewController(previousOrNewTVC, animated: true)
         }
         else if chooseOrSuggest == "Suggest Me Something"{
             let suggestVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"SuggestController") as! SuggestViewController
-            suggestVC.categoryOfDress = DressCategory(rawValue: categoryChosen.text!)!
+            if let choosedCategory = DressCategory(rawValue: category){
+            suggestVC.categoryOfDress = choosedCategory
+            }
             suggestVC.userId = self.userId
+            suggestVC.newUser = self.newUser
             self.navigationController?.pushViewController(suggestVC, animated: true)
         }
-        
-
+        }
+            else{
+                showAlertController(title:"Select Category", message: "Select the category of the attire before you proceed", actionTitle: "OK")
+                }
+        }
     }
     
    

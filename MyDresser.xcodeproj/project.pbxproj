@@ -9,27 +9,28 @@
 /* Begin PBXBuildFile section */
 		8B1A39AB165348CFB623AC46 /* Pods_MyDresserUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1AEB6789BBEBBDD58FAFC5 /* Pods_MyDresserUITests.framework */; };
 		C309DD261F60210900936864 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309DD251F60210900936864 /* AppDelegate.swift */; };
-		C309DD281F60210900936864 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309DD271F60210900936864 /* ViewController.swift */; };
 		C309DD2B1F60210900936864 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C309DD291F60210900936864 /* Main.storyboard */; };
 		C309DD2E1F60210900936864 /* MyDresser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C309DD2C1F60210900936864 /* MyDresser.xcdatamodeld */; };
 		C309DD301F60210900936864 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C309DD2F1F60210900936864 /* Assets.xcassets */; };
 		C309DD331F60210900936864 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C309DD311F60210900936864 /* LaunchScreen.storyboard */; };
 		C309DD3E1F60210900936864 /* MyDresserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309DD3D1F60210900936864 /* MyDresserTests.swift */; };
 		C309DD491F60210900936864 /* MyDresserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309DD481F60210900936864 /* MyDresserUITests.swift */; };
-		C334EB6D1F6033A20051652D /* ChooseOrSuggestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C334EB6C1F6033A20051652D /* ChooseOrSuggestTableViewController.swift */; };
-		C334EB6F1F60341A0051652D /* ChooseOrSuggestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C334EB6E1F60341A0051652D /* ChooseOrSuggestTableViewCell.swift */; };
-		C34438DD1F60FFD400B9037F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438DC1F60FFD400B9037F /* CategoryViewController.swift */; };
-		C34438DF1F6102A300B9037F /* PreviousOrNewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438DE1F6102A300B9037F /* PreviousOrNewTableViewController.swift */; };
-		C34438E11F6102C000B9037F /* PreviousOrNewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438E01F6102C000B9037F /* PreviousOrNewTableViewCell.swift */; };
-		C34438E31F61071200B9037F /* PreviousTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438E21F61071200B9037F /* PreviousTableViewController.swift */; };
-		C34438E51F61073700B9037F /* PreviousTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438E41F61073700B9037F /* PreviousTableViewCell.swift */; };
-		C34438E71F610A0500B9037F /* NewDressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438E61F610A0500B9037F /* NewDressViewController.swift */; };
-		C34438ED1F611EB300B9037F /* AttireOfTheDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34438EC1F611EB300B9037F /* AttireOfTheDayViewController.swift */; };
 		C34CA1681F6542F400150238 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C34CA1671F6542F400150238 /* GoogleService-Info.plist */; };
-		C37C2E681F629A80007F9812 /* CasualDress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C2E671F629A80007F9812 /* CasualDress.swift */; };
-		C3E3CF391F61376800FF15BD /* SuggestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E3CF381F61376800FF15BD /* SuggestViewController.swift */; };
-		C3EEE50C1F669F90001D074C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEE50B1F669F90001D074C /* LoginViewController.swift */; };
-		C3EEE50E1F669FAB001D074C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EEE50D1F669FAB001D074C /* SignupViewController.swift */; };
+		C35274D51F69695000011215 /* AttireOfTheDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274CC1F69695000011215 /* AttireOfTheDayViewController.swift */; };
+		C35274D61F69695000011215 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274CD1F69695000011215 /* CategoryViewController.swift */; };
+		C35274D71F69695000011215 /* ChooseOrSuggestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274CE1F69695000011215 /* ChooseOrSuggestTableViewController.swift */; };
+		C35274D81F69695000011215 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274CF1F69695000011215 /* LoginViewController.swift */; };
+		C35274D91F69695000011215 /* NewDressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274D01F69695000011215 /* NewDressViewController.swift */; };
+		C35274DA1F69695000011215 /* PreviousOrNewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274D11F69695000011215 /* PreviousOrNewTableViewController.swift */; };
+		C35274DB1F69695000011215 /* PreviousTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274D21F69695000011215 /* PreviousTableViewController.swift */; };
+		C35274DC1F69695000011215 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274D31F69695000011215 /* SignupViewController.swift */; };
+		C35274DD1F69695000011215 /* SuggestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274D41F69695000011215 /* SuggestViewController.swift */; };
+		C35274E11F6969F000011215 /* CasualDress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274DF1F6969F000011215 /* CasualDress.swift */; };
+		C35274E21F6969F000011215 /* DressCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274E01F6969F000011215 /* DressCategory.swift */; };
+		C35274E71F696A7200011215 /* ChooseOrSuggestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274E41F696A7200011215 /* ChooseOrSuggestTableViewCell.swift */; };
+		C35274E81F696A7200011215 /* PreviousOrNewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274E51F696A7200011215 /* PreviousOrNewTableViewCell.swift */; };
+		C35274E91F696A7200011215 /* PreviousTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274E61F696A7200011215 /* PreviousTableViewCell.swift */; };
+		C38419241F697F61008A8C5B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38419231F697F61008A8C5B /* Utilities.swift */; };
 		CAED55853D2541D0B7A225DD /* Pods_MyDresser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F9BB7EFC5158496D9DA997 /* Pods_MyDresser.framework */; };
 		F64342DC2CECC43227B52E9A /* Pods_MyDresserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB2118E6D709F75683F0EEF /* Pods_MyDresserTests.framework */; };
 /* End PBXBuildFile section */
@@ -62,7 +63,6 @@
 		B21DDE107AA08B8A9D85291E /* Pods-MyDresserTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDresserTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDresserTests/Pods-MyDresserTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C309DD221F60210900936864 /* MyDresser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDresser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C309DD251F60210900936864 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C309DD271F60210900936864 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C309DD2A1F60210900936864 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C309DD2D1F60210900936864 /* MyDresser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyDresser.xcdatamodel; sourceTree = "<group>"; };
 		C309DD2F1F60210900936864 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,20 +74,22 @@
 		C309DD441F60210900936864 /* MyDresserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDresserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C309DD481F60210900936864 /* MyDresserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDresserUITests.swift; sourceTree = "<group>"; };
 		C309DD4A1F60210900936864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C334EB6C1F6033A20051652D /* ChooseOrSuggestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseOrSuggestTableViewController.swift; sourceTree = "<group>"; };
-		C334EB6E1F60341A0051652D /* ChooseOrSuggestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseOrSuggestTableViewCell.swift; sourceTree = "<group>"; };
-		C34438DC1F60FFD400B9037F /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		C34438DE1F6102A300B9037F /* PreviousOrNewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousOrNewTableViewController.swift; sourceTree = "<group>"; };
-		C34438E01F6102C000B9037F /* PreviousOrNewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousOrNewTableViewCell.swift; sourceTree = "<group>"; };
-		C34438E21F61071200B9037F /* PreviousTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousTableViewController.swift; sourceTree = "<group>"; };
-		C34438E41F61073700B9037F /* PreviousTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousTableViewCell.swift; sourceTree = "<group>"; };
-		C34438E61F610A0500B9037F /* NewDressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDressViewController.swift; sourceTree = "<group>"; };
-		C34438EC1F611EB300B9037F /* AttireOfTheDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttireOfTheDayViewController.swift; sourceTree = "<group>"; };
 		C34CA1671F6542F400150238 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C37C2E671F629A80007F9812 /* CasualDress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasualDress.swift; sourceTree = "<group>"; };
-		C3E3CF381F61376800FF15BD /* SuggestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestViewController.swift; sourceTree = "<group>"; };
-		C3EEE50B1F669F90001D074C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		C3EEE50D1F669FAB001D074C /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		C35274CC1F69695000011215 /* AttireOfTheDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttireOfTheDayViewController.swift; sourceTree = "<group>"; };
+		C35274CD1F69695000011215 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		C35274CE1F69695000011215 /* ChooseOrSuggestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseOrSuggestTableViewController.swift; sourceTree = "<group>"; };
+		C35274CF1F69695000011215 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C35274D01F69695000011215 /* NewDressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDressViewController.swift; sourceTree = "<group>"; };
+		C35274D11F69695000011215 /* PreviousOrNewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousOrNewTableViewController.swift; sourceTree = "<group>"; };
+		C35274D21F69695000011215 /* PreviousTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousTableViewController.swift; sourceTree = "<group>"; };
+		C35274D31F69695000011215 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		C35274D41F69695000011215 /* SuggestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestViewController.swift; sourceTree = "<group>"; };
+		C35274DF1F6969F000011215 /* CasualDress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasualDress.swift; sourceTree = "<group>"; };
+		C35274E01F6969F000011215 /* DressCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DressCategory.swift; sourceTree = "<group>"; };
+		C35274E41F696A7200011215 /* ChooseOrSuggestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseOrSuggestTableViewCell.swift; sourceTree = "<group>"; };
+		C35274E51F696A7200011215 /* PreviousOrNewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousOrNewTableViewCell.swift; sourceTree = "<group>"; };
+		C35274E61F696A7200011215 /* PreviousTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousTableViewCell.swift; sourceTree = "<group>"; };
+		C38419231F697F61008A8C5B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CBB2118E6D709F75683F0EEF /* Pods_MyDresserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDresserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -154,22 +156,11 @@
 		C309DD241F60210900936864 /* MyDresser */ = {
 			isa = PBXGroup;
 			children = (
+				C35274E31F696A7200011215 /* View */,
 				C309DD251F60210900936864 /* AppDelegate.swift */,
-				C3EEE50B1F669F90001D074C /* LoginViewController.swift */,
-				C3EEE50D1F669FAB001D074C /* SignupViewController.swift */,
-				C334EB6C1F6033A20051652D /* ChooseOrSuggestTableViewController.swift */,
-				C334EB6E1F60341A0051652D /* ChooseOrSuggestTableViewCell.swift */,
-				C34438DC1F60FFD400B9037F /* CategoryViewController.swift */,
-				C3E3CF381F61376800FF15BD /* SuggestViewController.swift */,
-				C34438DE1F6102A300B9037F /* PreviousOrNewTableViewController.swift */,
-				C34438E01F6102C000B9037F /* PreviousOrNewTableViewCell.swift */,
-				C34438E21F61071200B9037F /* PreviousTableViewController.swift */,
-				C34438E41F61073700B9037F /* PreviousTableViewCell.swift */,
-				C34438E61F610A0500B9037F /* NewDressViewController.swift */,
-				C37C2E671F629A80007F9812 /* CasualDress.swift */,
-				C34438EC1F611EB300B9037F /* AttireOfTheDayViewController.swift */,
+				C35274DE1F6969F000011215 /* Model */,
+				C35274CB1F69695000011215 /* ViewControllers */,
 				C309DD291F60210900936864 /* Main.storyboard */,
-				C309DD271F60210900936864 /* ViewController.swift */,
 				C309DD2F1F60210900936864 /* Assets.xcassets */,
 				C309DD311F60210900936864 /* LaunchScreen.storyboard */,
 				C309DD341F60210900936864 /* Info.plist */,
@@ -195,6 +186,42 @@
 				C309DD4A1F60210900936864 /* Info.plist */,
 			);
 			path = MyDresserUITests;
+			sourceTree = "<group>";
+		};
+		C35274CB1F69695000011215 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C35274CC1F69695000011215 /* AttireOfTheDayViewController.swift */,
+				C35274CD1F69695000011215 /* CategoryViewController.swift */,
+				C35274CE1F69695000011215 /* ChooseOrSuggestTableViewController.swift */,
+				C35274CF1F69695000011215 /* LoginViewController.swift */,
+				C35274D01F69695000011215 /* NewDressViewController.swift */,
+				C35274D11F69695000011215 /* PreviousOrNewTableViewController.swift */,
+				C35274D21F69695000011215 /* PreviousTableViewController.swift */,
+				C35274D31F69695000011215 /* SignupViewController.swift */,
+				C35274D41F69695000011215 /* SuggestViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C35274DE1F6969F000011215 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C35274DF1F6969F000011215 /* CasualDress.swift */,
+				C35274E01F6969F000011215 /* DressCategory.swift */,
+				C38419231F697F61008A8C5B /* Utilities.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C35274E31F696A7200011215 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C35274E41F696A7200011215 /* ChooseOrSuggestTableViewCell.swift */,
+				C35274E51F696A7200011215 /* PreviousOrNewTableViewCell.swift */,
+				C35274E61F696A7200011215 /* PreviousTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		FD1A3184D033434D27818497 /* Pods */ = {
@@ -287,6 +314,7 @@
 				TargetAttributes = {
 					C309DD211F60210900936864 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = KG2TY33928;
 						ProvisioningStyle = Automatic;
 					};
 					C309DD381F60210900936864 = {
@@ -510,22 +538,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C34438E31F61071200B9037F /* PreviousTableViewController.swift in Sources */,
-				C34438DF1F6102A300B9037F /* PreviousOrNewTableViewController.swift in Sources */,
-				C309DD281F60210900936864 /* ViewController.swift in Sources */,
-				C3EEE50C1F669F90001D074C /* LoginViewController.swift in Sources */,
+				C35274E81F696A7200011215 /* PreviousOrNewTableViewCell.swift in Sources */,
+				C35274E71F696A7200011215 /* ChooseOrSuggestTableViewCell.swift in Sources */,
+				C35274DB1F69695000011215 /* PreviousTableViewController.swift in Sources */,
 				C309DD2E1F60210900936864 /* MyDresser.xcdatamodeld in Sources */,
-				C37C2E681F629A80007F9812 /* CasualDress.swift in Sources */,
-				C334EB6D1F6033A20051652D /* ChooseOrSuggestTableViewController.swift in Sources */,
-				C34438ED1F611EB300B9037F /* AttireOfTheDayViewController.swift in Sources */,
-				C34438E11F6102C000B9037F /* PreviousOrNewTableViewCell.swift in Sources */,
-				C34438E71F610A0500B9037F /* NewDressViewController.swift in Sources */,
-				C3EEE50E1F669FAB001D074C /* SignupViewController.swift in Sources */,
-				C34438E51F61073700B9037F /* PreviousTableViewCell.swift in Sources */,
+				C35274E91F696A7200011215 /* PreviousTableViewCell.swift in Sources */,
+				C35274E11F6969F000011215 /* CasualDress.swift in Sources */,
+				C35274D81F69695000011215 /* LoginViewController.swift in Sources */,
+				C35274D51F69695000011215 /* AttireOfTheDayViewController.swift in Sources */,
+				C35274D91F69695000011215 /* NewDressViewController.swift in Sources */,
+				C35274D71F69695000011215 /* ChooseOrSuggestTableViewController.swift in Sources */,
+				C38419241F697F61008A8C5B /* Utilities.swift in Sources */,
 				C309DD261F60210900936864 /* AppDelegate.swift in Sources */,
-				C3E3CF391F61376800FF15BD /* SuggestViewController.swift in Sources */,
-				C34438DD1F60FFD400B9037F /* CategoryViewController.swift in Sources */,
-				C334EB6F1F60341A0051652D /* ChooseOrSuggestTableViewCell.swift in Sources */,
+				C35274DD1F69695000011215 /* SuggestViewController.swift in Sources */,
+				C35274DC1F69695000011215 /* SignupViewController.swift in Sources */,
+				C35274E21F6969F000011215 /* DressCategory.swift in Sources */,
+				C35274DA1F69695000011215 /* PreviousOrNewTableViewController.swift in Sources */,
+				C35274D61F69695000011215 /* CategoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,11 +709,15 @@
 			baseConfigurationReference = 97B5414066E299FAA4FA27A3 /* Pods-MyDresser.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = KG2TY33928;
 				INFOPLIST_FILE = MyDresser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = yml.MyDresser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yml.MyDresser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -695,11 +728,15 @@
 			baseConfigurationReference = 7F5F59CCB43B1C2535B4928E /* Pods-MyDresser.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = KG2TY33928;
 				INFOPLIST_FILE = MyDresser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = yml.MyDresser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yml.MyDresser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

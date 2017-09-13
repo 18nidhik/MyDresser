@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var confirmPasswordText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
@@ -21,8 +21,11 @@ class SignupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-          ref = Database.database().reference()
-        // Do any additional setup after loading the view.
+        emailIdText.delegate = self
+        passwordText.delegate = self
+        confirmPasswordText.delegate = self
+        ref = Database.database().reference()
+        hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,23 +34,19 @@ class SignupViewController: UIViewController {
     }
     
     @IBAction func signUpAction(_ sender: Any) {
-        
+        performSignUpAction()
+    }
+    func performSignUpAction(){
         let enteredEmailId =  emailIdText.text
         let enteredPassword = passwordText.text
         let enteredConfirmPassword = confirmPasswordText.text
         
         guard let emailId = enteredEmailId, let password = enteredPassword, let confirmPassword = enteredConfirmPassword, !emailId.isEmpty, !password.isEmpty else {
-            
-            let alertController = UIAlertController(title: "Please fill all the details correctly!", message: "Try again", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-            
+            showAlertController(title:"Try Again" , message: "Please fill all the details correctly", actionTitle: "OK")
             return
         }
         guard password == confirmPassword else{
-            let alertController = UIAlertController(title: "Passwords donot match", message: "Try again", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
+            showAlertController(title:"Try Again" , message: "Passwords donot match", actionTitle: "OK")
             return
         }
         Auth.auth().createUser(withEmail: emailId, password: password, completion: { (user, error) in
@@ -60,10 +59,11 @@ class SignupViewController: UIViewController {
                 print("user created")
                 let chooseOrSuggestTVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"ChooseOrSuggestController") as! ChooseOrSuggestTableViewController
                 chooseOrSuggestTVC.userUniqueId = uid
+                chooseOrSuggestTVC.newUser = true
                 self.navigationController?.pushViewController(chooseOrSuggestTVC, animated: true)
                 
             }
-            
+                
             else {
                 print("error")
                 print(error)
@@ -71,15 +71,20 @@ class SignupViewController: UIViewController {
         })
 
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if self.confirmPasswordText.isFirstResponder {
+            self.confirmPasswordText.resignFirstResponder()
+            performSignUpAction()
+        } else if self.emailIdText.isFirstResponder {
+            self.emailIdText.resignFirstResponder()
+            self.passwordText.becomeFirstResponder()
+        } else{
+            self.passwordText.resignFirstResponder()
+            self.confirmPasswordText.becomeFirstResponder()
 
-    /*
-    // MARK: - Navigation
+        }
+        
+        return true
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
-
 }

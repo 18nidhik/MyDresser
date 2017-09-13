@@ -9,16 +9,14 @@
 import Foundation
 
 struct Dress{
-//    var top: String = ""
-//    var bottom:String = ""
     var top: NSURL = NSURL()
     var bottom:NSURL = NSURL()
     var categorty : DressCategory = .other
     var numberOfTimesWorn:Int = 0
 }
-enum DressCategory:String {
-    case formal
-    case casual
-    case ethnic
-    case other
-}
+//enum DressCategory:String {
+//    case formal
+//    case casual
+//    case ethnic
+//    case other
+//}
