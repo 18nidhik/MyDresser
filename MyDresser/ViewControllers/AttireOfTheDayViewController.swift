@@ -35,7 +35,7 @@ class AttireOfTheDayViewController: UIViewController {
             self.navigationController?.popToViewController((navigationController?.viewControllers[2])!, animated: true)
             }
             else{
-            self.navigationController?.popToViewController((navigationController?.viewControllers[1])!, animated: true)
+            self.navigationController?.popToViewController((navigationController?.viewControllers[2])!, animated: true)
             }
     }
 

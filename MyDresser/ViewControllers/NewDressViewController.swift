@@ -52,21 +52,25 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
             startAction = 0
             downloadTopUrl = topUrl
             categoryOfDress = categoryOfPreviousDress
-            Storage.storage().reference(forURL: (downloadTopUrl?.absoluteString)!).getData(maxSize: 3 * 1024 * 1024, completion: { (data:Data?, error:Error?) in
-            //debugPrint("error : \(error?.localizedDescription) and Data : \(data)")
-            let pic = UIImage(data: data!)
-            self.newTopImage.image = pic
-            
-            })
+            FirebaseReference.sharedInstance.downloadImageFromFirebase(downloadUrl: downloadTopUrl,newImage :newTopImage, callback:{() ->() in
+            print("top pic done")})
+//            Storage.storage().reference(forURL: (downloadTopUrl?.absoluteString)!).getData(maxSize: 3 * 1024 * 1024, completion: { (data:Data?, error:Error?) in
+//            //debugPrint("error : \(error?.localizedDescription) and Data : \(data)")
+//            let pic = UIImage(data: data!)
+//            self.newTopImage.image = pic
+//            
+//            })
         }
         if let bottomUrl = bottomUrlOfPreviousDress{
             downloadBottomUrl = bottomUrl
-            Storage.storage().reference(forURL: (downloadBottomUrl?.absoluteString)!).getData(maxSize: 3 * 1024 * 1024, completion: { (data:Data?, error:Error?) in
-               // debugPrint("error : \(error?.localizedDescription) and Data : \(data)")
-                let pic = UIImage(data: data!)
-                self.newBottomImage.image = pic
-                
-            })
+            FirebaseReference.sharedInstance.downloadImageFromFirebase(downloadUrl: downloadBottomUrl,newImage :newBottomImage, callback:{() ->() in
+                print("bottom pic done")})
+//            Storage.storage().reference(forURL: (downloadBottomUrl?.absoluteString)!).getData(maxSize: 3 * 1024 * 1024, completion: { (data:Data?, error:Error?) in
+//               // debugPrint("error : \(error?.localizedDescription) and Data : \(data)")
+//                let pic = UIImage(data: data!)
+//                self.newBottomImage.image = pic
+//                
+//            })
         }
         toptapGestureRecogniser.addTarget(self, action: #selector(NewDressViewController.tappedTopView))
         newTopImage.isUserInteractionEnabled = true
@@ -187,146 +191,148 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
             showAlertController(title:"No Bottom Image", message: "Select the bottom image!!", actionTitle: "OK")
             }
         
-        
-        var indexOfDress = -1   // To check if the details of dress is already present in database.
         let attireOfTheDayVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AttireOfTheDayController") as! AttireOfTheDayViewController
         attireOfTheDayVC.topImage = newTopImage.image
         attireOfTheDayVC.bottomImage = newBottomImage.image
         
-        
         // startAction is 1 only if a new dress is picked from gallery or camera
         if startAction == 1{
         print("entered due to startaction")
-            
-         // save image of top in firebase
-        let tempImageRef = storageRef?.child(userId).child(categoryOfDress.rawValue).child((NSUUID().uuidString))
-        let metadata = StorageMetadata()
-        metadata.contentType = "image/jpeg"
-        var imageData: Data!
-        if let image = newTopImage.image {
-        imageData = UIImageJPEGRepresentation(image, 0.8)              //convert from UIImage to Data
-//        } else {
-//        print("Could not find image")
-//        }
-        tempImageRef?.putData(imageData, metadata: nil) { metadata, error in
-            if (error != nil) {
-                print(error)
-            } else {
-                    print("Upload successful for top")
-                    let downloadTopURL = metadata!.downloadURL()!
-                    self.downloadTopUrl = downloadTopURL
-                    print("url of image downloaded is \(self.downloadTopUrl)")
-            }
-            
-            
-            //save image of bottom in firebase
-            let tempImageRef1 = self.storageRef?.child(self.userId).child(self.categoryOfDress.rawValue).child((NSUUID().uuidString))
-            let metadata1 = StorageMetadata()
-            metadata1.contentType = "image/jpeg"
-            var imageData1: Data!
-            if let image1 = self.newBottomImage.image {
-                imageData1 = UIImageJPEGRepresentation(image1, 0.8)        //convert from UIImage to Data
-                //        } else {
-                //            print("Could not find image")
-                //        }
-                _ = tempImageRef1?.putData(imageData1, metadata: nil) { metadata, error in
-                    if (error != nil) {
-                        print(error)
-                    } else {
-                        print("Upload successful for bottom")
-                        let downloadBottomURL = metadata!.downloadURL()!
-                        self.downloadBottomUrl = downloadBottomURL
-                        print("url of image downloaded is \(self.downloadBottomUrl)")
-                    }
-                    
-                    
-                    // fetch details of dresses from firebase
-                    detailsOfDresses = []
-                    keys = []
-                    self.databaseref?.child(self.userId).observeSingleEvent(of: .value, with: {(snapshot) in
-                        if let dictionary = snapshot.value as? NSDictionary {
-                            for(key,value) in dictionary{
-                                detailsOfDresses.append(value as! [String : AnyObject] )
-                                keys.append(key)
-                            }
-                        }
-                        // Check if the URL of the image obtained from firebase is already present in database. If so, udate. If not save
-                        for(index,values) in detailsOfDresses.enumerated(){
-                            if values["category"] as! String == self.categoryOfDress.rawValue{
-                                if values["top"] as! String == self.downloadTopUrl?.absoluteString && values["bottom"] as! String == self.downloadBottomUrl?.absoluteString{
-                                    self.dbnumber = values["numberOfTimesWorn"] as! Int
-                                    indexOfDress = index
-                                    print("index is \(indexOfDress)")
-                                }
-                            }
-                        }
-                        if indexOfDress == -1{
-                            self.databaseref?.child(self.userId).childByAutoId().setValue(["top": self.downloadTopUrl?.absoluteString, "bottom": self.downloadBottomUrl?.absoluteString, "category": self.categoryOfDress.rawValue, "numberOfTimesWorn": 1 ])
-                            print("save now")
-                        }
-                        else{
-                            print("update now")
-                            self.dbnumber += 1
-                            let childRef = self.databaseref?.child(self.userId).child(keys[indexOfDress] as! String)
-                            childRef?.updateChildValues(["numberOfTimesWorn": self.dbnumber])
-                        }
+            FirebaseReference.sharedInstance.saveTopImageToStorage(userId: self.userId, newTopImage: self.newTopImage,categoryOfDress: self.categoryOfDress,callback: { (downloadedTopUrl) ->() in
+                
+                print("Top just now saved in storage after this bottom should save \(downloadedTopUrl)")
+                FirebaseReference.sharedInstance.saveBottomImageToStorage (userId: self.userId, newBottomImage: self.newBottomImage,categoryOfDress: self.categoryOfDress,callback: { (downloadedBottomUrl) ->()  in
+                    print("Bottom just now saved in storage after this fetch from database \(downloadedBottomUrl)")
+                    FirebaseReference.sharedInstance.fetchFromDataBaseAndSaveOrUpdate(userId: self.userId, categoryOfDress: self.categoryOfDress, downloadTopUrl :downloadedTopUrl,downloadBottomUrl: downloadedBottomUrl, callback:{
+                        print("now fetched from database and saved or updated")
                     })
-                }
-            }
-
+                })
+            })
         }
-    }
-        
-            
-    }
         
         //startDatabase is 1 only if a previously worn dress is selected
         if startDatabase == 1{
-            print("entered due to startDatabse")
-            detailsOfDresses = []
-            keys = []
-            self.databaseref?.child(self.userId).observeSingleEvent(of: .value, with: {(snapshot) in
-                    if let dictionary = snapshot.value as? NSDictionary {
-                    for(key,value) in dictionary{
-                        detailsOfDresses.append(value as! [String : AnyObject] )
-                        keys.append(key)
-                    }
-                }
-                print("second")
-                for(index,values) in detailsOfDresses.enumerated(){
-                    if values["category"] as! String == self.categoryOfDress.rawValue{
-                        if values["top"] as! String == self.downloadTopUrl?.absoluteString && values["bottom"] as! String == self.downloadBottomUrl?.absoluteString{
-                            self.dbnumber = values["numberOfTimesWorn"] as! Int
-                            indexOfDress = index
-                            print("index is \(indexOfDress)")
-                        }
-                    }
-                }
-                if indexOfDress == -1{
-                    self.databaseref?.child(self.userId).childByAutoId().setValue(["top": self.downloadTopUrl?.absoluteString, "bottom": self.downloadBottomUrl?.absoluteString, "category": self.categoryOfDress.rawValue, "numberOfTimesWorn": 1 ])
-                    print("save now")
-                }
-                else{
-                    print("update now")
-                    self.dbnumber += 1
-                    let childRef = self.databaseref?.child(self.userId).child(keys[indexOfDress] as! String)
-                    childRef?.updateChildValues(["numberOfTimesWorn": self.dbnumber])
-                    }
+            FirebaseReference.sharedInstance.fetchFromDataBaseAndSaveOrUpdate(userId: self.userId, categoryOfDress: self.categoryOfDress, downloadTopUrl :downloadTopUrl,downloadBottomUrl: downloadBottomUrl, callback:{
+                print("now fetched from database and saved or updated")
             })
-        }
+         }
         self.navigationController?.pushViewController(attireOfTheDayVC, animated: true)
     }
+    
+    ////            saveBottomImageToStorage {()->() in
+    ////                print("Bottom just now saved in storage after this fetch from database")
+    ////           }
+    ////            fetchFromDataBaseAndSaveOrUpdate( callback:{
+    ////                    print("now fetched from database and saved or updated")
+    ////                })
 
-    @IBAction func rejectDress(_ sender: Any) {
-        
-        if newUser ==  true{
-            self.navigationController?.popToViewController((navigationController?.viewControllers[2])!, animated: true)
-        }
-        else{
-            self.navigationController?.popToViewController((navigationController?.viewControllers[1])!, animated: true)
-        }
-    }
+//    func saveTopImageToStorage(callback: @escaping () ->()){
+//        var topSaveSucces = false
+//        // save image of top in firebase
+//        let tempImageRef = storageRef?.child(userId).child(categoryOfDress.rawValue).child((NSUUID().uuidString))
+//        let metadata = StorageMetadata()
+//        metadata.contentType = "image/jpeg"
+//        var imageData: Data!
+//        if let image = newTopImage.image {
+//            imageData = UIImageJPEGRepresentation(image, 0.8)
+//        tempImageRef?.putData(imageData, metadata: nil) { metadata, error in
+//            if (error != nil) {
+//                print(error)
+//            } else {
+//                print("Upload successful for top")
+//                let downloadTopURL = metadata!.downloadURL()!
+//                self.downloadTopUrl = downloadTopURL
+//                print("url of image downloaded is \(self.downloadTopUrl)")
+//                topSaveSucces = true
+//            }
+//            if topSaveSucces == true{
+//                print("call back just called")
+//                callback()
+//                
+//            }
+//        }
+//            
+//        
+//        }
+//    }
+//    func saveBottomImageToStorage(callback: @escaping ()->()){
+//        //save image of bottom in firebase
+//        var bottomSaveSucces = false
+//        let tempImageRef1 = self.storageRef?.child(self.userId).child(self.categoryOfDress.rawValue).child((NSUUID().uuidString))
+//        let metadata1 = StorageMetadata()
+//        metadata1.contentType = "image/jpeg"
+//        var imageData1: Data!
+//        if let image1 = self.newBottomImage.image {
+//            imageData1 = UIImageJPEGRepresentation(image1, 0.8)        //convert from UIImage to Data
+//            //        } else {
+//            //            print("Could not find image")
+//            //        }
+//            _ = tempImageRef1?.putData(imageData1, metadata: nil) { metadata, error in
+//                if (error != nil) {
+//                    print(error)
+//                } else {
+//                    print("Upload successful for bottom")
+//                    let downloadBottomURL = metadata!.downloadURL()!
+//                    self.downloadBottomUrl = downloadBottomURL
+//                    print("url of image downloaded is \(self.downloadBottomUrl)")
+//                    bottomSaveSucces = true
+//                }
+//                if bottomSaveSucces == true{
+//                    callback()
+//                }
+//
+//            }
+//        }
+//        
+//
+//    }
+//    func fetchFromDataBaseAndSaveOrUpdate(callback:()->()){
+//        var indexOfDress = -1
+//        detailsOfDresses = []
+//        keys = []
+//        self.databaseref?.child(self.userId).observeSingleEvent(of: .value, with: {(snapshot) in
+//            if let dictionary = snapshot.value as? NSDictionary {
+//                for(key,value) in dictionary{
+//                    detailsOfDresses.append(value as! [String : AnyObject] )
+//                    keys.append(key)
+//                }
+//            }
+//            // Check if the URL of the image obtained from firebase is already present in database. If so, udate. If not save
+//            for(index,values) in detailsOfDresses.enumerated(){
+//                if values["category"] as! String == self.categoryOfDress.rawValue{
+//                    if values["top"] as! String == self.downloadTopUrl?.absoluteString && values["bottom"] as! String == self.downloadBottomUrl?.absoluteString{
+//                        self.dbnumber = values["numberOfTimesWorn"] as! Int
+//                        indexOfDress = index
+//                        print("index is \(indexOfDress)")
+//                    }
+//                }
+//            }
+//            if indexOfDress == -1{
+//                self.databaseref?.child(self.userId).childByAutoId().setValue(["top": self.downloadTopUrl?.absoluteString, "bottom": self.downloadBottomUrl?.absoluteString, "category": self.categoryOfDress.rawValue, "numberOfTimesWorn": 1 ])
+//                print("save now")
+//            }
+//            else{
+//                print("update now")
+//                self.dbnumber += 1
+//                let childRef = self.databaseref?.child(self.userId).child(keys[indexOfDress] as! String)
+//                childRef?.updateChildValues(["numberOfTimesWorn": self.dbnumber])
+//            }
+//        })
+//
+//    }
+    
+
+//    @IBAction func rejectDress(_ sender: Any) {
+//        
+//        if newUser ==  true{
+//            self.navigationController?.popToViewController((navigationController?.viewControllers[2])!, animated: true)
+//        }
+//        else{
+//            self.navigationController?.popToViewController((navigationController?.viewControllers[2])!, animated: true)
+//        }
+//    }
 }
+
 extension NewDressViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         

@@ -13,7 +13,7 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var categoryChosen: UILabel!
     var chooseOrSuggest:String = ""
-    let categories = ["formal","casual","ethnic"]
+    let categories = ["other","formal","casual","ethnic"]
     var userId: String = ""
     var newUser = false
     

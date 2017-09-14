@@ -15,7 +15,10 @@
 		C309DD331F60210900936864 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C309DD311F60210900936864 /* LaunchScreen.storyboard */; };
 		C309DD3E1F60210900936864 /* MyDresserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309DD3D1F60210900936864 /* MyDresserTests.swift */; };
 		C309DD491F60210900936864 /* MyDresserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309DD481F60210900936864 /* MyDresserUITests.swift */; };
+		C3417D351F6A49AA00722305 /* FirebaseReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3417D341F6A49AA00722305 /* FirebaseReference.swift */; };
+		C3417D371F6A694800722305 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3417D361F6A694800722305 /* InitialViewController.swift */; };
 		C34CA1681F6542F400150238 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C34CA1671F6542F400150238 /* GoogleService-Info.plist */; };
+		C35232131F6A9EE300DC8491 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35232121F6A9EE300DC8491 /* Authentication.swift */; };
 		C35274D51F69695000011215 /* AttireOfTheDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274CC1F69695000011215 /* AttireOfTheDayViewController.swift */; };
 		C35274D61F69695000011215 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274CD1F69695000011215 /* CategoryViewController.swift */; };
 		C35274D71F69695000011215 /* ChooseOrSuggestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274CE1F69695000011215 /* ChooseOrSuggestTableViewController.swift */; };
@@ -74,9 +77,12 @@
 		C309DD441F60210900936864 /* MyDresserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDresserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C309DD481F60210900936864 /* MyDresserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDresserUITests.swift; sourceTree = "<group>"; };
 		C309DD4A1F60210900936864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3417D341F6A49AA00722305 /* FirebaseReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseReference.swift; sourceTree = "<group>"; };
+		C3417D361F6A694800722305 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		C34CA1671F6542F400150238 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C35232121F6A9EE300DC8491 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		C35274CC1F69695000011215 /* AttireOfTheDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttireOfTheDayViewController.swift; sourceTree = "<group>"; };
-		C35274CD1F69695000011215 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		C35274CD1F69695000011215 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryViewController.swift; path = ViewControllers/CategoryViewController.swift; sourceTree = "<group>"; };
 		C35274CE1F69695000011215 /* ChooseOrSuggestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseOrSuggestTableViewController.swift; sourceTree = "<group>"; };
 		C35274CF1F69695000011215 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C35274D01F69695000011215 /* NewDressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDressViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +170,7 @@
 				C309DD2F1F60210900936864 /* Assets.xcassets */,
 				C309DD311F60210900936864 /* LaunchScreen.storyboard */,
 				C309DD341F60210900936864 /* Info.plist */,
+				C35274CD1F69695000011215 /* CategoryViewController.swift */,
 				C309DD2C1F60210900936864 /* MyDresser.xcdatamodeld */,
 				C34CA1671F6542F400150238 /* GoogleService-Info.plist */,
 			);
@@ -192,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				C35274CC1F69695000011215 /* AttireOfTheDayViewController.swift */,
-				C35274CD1F69695000011215 /* CategoryViewController.swift */,
 				C35274CE1F69695000011215 /* ChooseOrSuggestTableViewController.swift */,
 				C35274CF1F69695000011215 /* LoginViewController.swift */,
 				C35274D01F69695000011215 /* NewDressViewController.swift */,
@@ -200,6 +206,7 @@
 				C35274D21F69695000011215 /* PreviousTableViewController.swift */,
 				C35274D31F69695000011215 /* SignupViewController.swift */,
 				C35274D41F69695000011215 /* SuggestViewController.swift */,
+				C3417D361F6A694800722305 /* InitialViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -210,6 +217,8 @@
 				C35274DF1F6969F000011215 /* CasualDress.swift */,
 				C35274E01F6969F000011215 /* DressCategory.swift */,
 				C38419231F697F61008A8C5B /* Utilities.swift */,
+				C3417D341F6A49AA00722305 /* FirebaseReference.swift */,
+				C35232121F6A9EE300DC8491 /* Authentication.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -541,6 +550,7 @@
 				C35274E81F696A7200011215 /* PreviousOrNewTableViewCell.swift in Sources */,
 				C35274E71F696A7200011215 /* ChooseOrSuggestTableViewCell.swift in Sources */,
 				C35274DB1F69695000011215 /* PreviousTableViewController.swift in Sources */,
+				C35232131F6A9EE300DC8491 /* Authentication.swift in Sources */,
 				C309DD2E1F60210900936864 /* MyDresser.xcdatamodeld in Sources */,
 				C35274E91F696A7200011215 /* PreviousTableViewCell.swift in Sources */,
 				C35274E11F6969F000011215 /* CasualDress.swift in Sources */,
@@ -548,10 +558,12 @@
 				C35274D51F69695000011215 /* AttireOfTheDayViewController.swift in Sources */,
 				C35274D91F69695000011215 /* NewDressViewController.swift in Sources */,
 				C35274D71F69695000011215 /* ChooseOrSuggestTableViewController.swift in Sources */,
+				C3417D351F6A49AA00722305 /* FirebaseReference.swift in Sources */,
 				C38419241F697F61008A8C5B /* Utilities.swift in Sources */,
 				C309DD261F60210900936864 /* AppDelegate.swift in Sources */,
 				C35274DD1F69695000011215 /* SuggestViewController.swift in Sources */,
 				C35274DC1F69695000011215 /* SignupViewController.swift in Sources */,
+				C3417D371F6A694800722305 /* InitialViewController.swift in Sources */,
 				C35274E21F6969F000011215 /* DressCategory.swift in Sources */,
 				C35274DA1F69695000011215 /* PreviousOrNewTableViewController.swift in Sources */,
 				C35274D61F69695000011215 /* CategoryViewController.swift in Sources */,

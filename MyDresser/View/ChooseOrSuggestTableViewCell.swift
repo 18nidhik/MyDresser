@@ -9,16 +9,17 @@
 import UIKit
 
 class ChooseOrSuggestTableViewCell: UITableViewCell {
-      var buttonObj : (() -> Void)? = nil
-    @IBAction func selectOrChooseAction(_ sender: Any) {
-
-        if let btnAction = self.buttonObj
-        {
-            btnAction()
-        }
-    
-    }
+//      var buttonObj : (() -> Void)? = nil
+//    @IBAction func selectOrChooseAction(_ sender: Any) {
+//
+//        if let btnAction = self.buttonObj
+//        {
+//            btnAction()
+//        }
+//    
+//    }
     @IBOutlet weak var optionLabel: UILabel!
+ // @IBOutlet weak var optionLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

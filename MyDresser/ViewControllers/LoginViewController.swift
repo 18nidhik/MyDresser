@@ -21,7 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var databaseHandle: DatabaseHandle?
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Login Page"
+        navigationItem.title = "Login to MyDresser"
         self.emailIdText.delegate = self
         self.passwordText.delegate = self
         ref = Database.database().reference()
@@ -39,11 +39,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         }
 
-    @IBAction func signUpAction(_ sender: Any) {
-        let signUpVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"SignupController") as! SignupViewController
-        self.navigationController?.pushViewController(signUpVC, animated: true)
-        
-    }
+//    @IBAction func signUpAction(_ sender: Any) {
+//        let signUpVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"SignupController") as! SignupViewController
+//        self.navigationController?.pushViewController(signUpVC, animated: true)
+//        
+//    }
     func performLoginAction()
     {
         let enteredEmailId =  self.emailIdText.text
@@ -53,20 +53,32 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             showAlertController(title:"Try Again" , message: "Please fill all the details correctly", actionTitle: "OK")
             return
         }
-        Auth.auth().signIn(withEmail: emailId, password: password, completion: { (user, error) in
-            if let user = user {
-                print(user)
-                let uid = user.uid
-                print("userid is \(uid)")
+        Authentication.sharedInstance.userLogin(emailId: emailId, password: password, callback: {(loginSuccess, uid) ->() in
+            if loginSuccess == true{
                 let chooseOrSuggestTVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"ChooseOrSuggestController") as! ChooseOrSuggestTableViewController
                 chooseOrSuggestTVC.userUniqueId = uid
                 chooseOrSuggestTVC.newUser = false
                 self.navigationController?.pushViewController(chooseOrSuggestTVC, animated: true)
-                
-            } else {
-                self.showAlertController(title:"Could not log in" , message: "Check entered details", actionTitle: "OK")
-                }
+
+            }
+            else{
+                 self.showAlertController(title:"Could not log in" , message: "Check entered details", actionTitle: "OK")
+            }
         })
+//        Auth.auth().signIn(withEmail: emailId, password: password, completion: { (user, error) in
+//            if let user = user {
+//                print(user)
+//                let uid = user.uid
+//                print("userid is \(uid)")
+//                let chooseOrSuggestTVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"ChooseOrSuggestController") as! ChooseOrSuggestTableViewController
+//                chooseOrSuggestTVC.userUniqueId = uid
+//                chooseOrSuggestTVC.newUser = false
+//                self.navigationController?.pushViewController(chooseOrSuggestTVC, animated: true)
+//                
+//            } else {
+//                self.showAlertController(title:"Could not log in" , message: "Check entered details", actionTitle: "OK")
+//                }
+//        })
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -84,14 +96,3 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        //tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}

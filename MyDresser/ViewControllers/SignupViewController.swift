@@ -21,6 +21,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Sign up to MyDresser"
         emailIdText.delegate = self
         passwordText.delegate = self
         confirmPasswordText.delegate = self
@@ -46,29 +47,38 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             return
         }
         guard password == confirmPassword else{
-            showAlertController(title:"Try Again" , message: "Passwords donot match", actionTitle: "OK")
+            showAlertController(title:"Try Again" , message: "Passwords do not match", actionTitle: "OK")
             return
         }
-        Auth.auth().createUser(withEmail: emailId, password: password, completion: { (user, error) in
-            
-            if let user = user {
-                //user found
-                print(user)
-                let uid = user.uid
-                print("userid is \(uid)")
-                print("user created")
+        Authentication.sharedInstance.createUser(emailId: emailId, password: password, callback: {(_ signupSuccess: Bool, _ uid: String)->() in
+            if signupSuccess == true{
                 let chooseOrSuggestTVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"ChooseOrSuggestController") as! ChooseOrSuggestTableViewController
                 chooseOrSuggestTVC.userUniqueId = uid
                 chooseOrSuggestTVC.newUser = true
                 self.navigationController?.pushViewController(chooseOrSuggestTVC, animated: true)
-                
-            }
-                
-            else {
-                print("error")
-                print(error)
+
             }
         })
+//        Auth.auth().createUser(withEmail: emailId, password: password, completion: { (user, error) in
+//            
+//            if let user = user {
+//                //user found
+//                print(user)
+//                let uid = user.uid
+//                print("userid is \(uid)")
+//                print("user created")
+//                let chooseOrSuggestTVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"ChooseOrSuggestController") as! ChooseOrSuggestTableViewController
+//                chooseOrSuggestTVC.userUniqueId = uid
+//                chooseOrSuggestTVC.newUser = true
+//                self.navigationController?.pushViewController(chooseOrSuggestTVC, animated: true)
+//                
+//            }
+//                
+//            else {
+//                print("error")
+//                print(error)
+//            }
+//        })
 
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

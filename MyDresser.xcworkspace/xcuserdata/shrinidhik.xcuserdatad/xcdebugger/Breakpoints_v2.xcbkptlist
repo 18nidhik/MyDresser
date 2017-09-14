@@ -333,5 +333,149 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyDresser/ViewControllers/NewDressViewController.swift"
+            timestampString = "527072551.108637"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "NewDressViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyDresser/Model/FirebaseReference.swift"
+            timestampString = "527066769.729016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "FirebaseReference"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyDresser/Model/FirebaseReference.swift"
+            timestampString = "527066769.729016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "saveTopImageToStorage(userId:newTopImage:categoryOfDress:callback:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyDresser/Model/FirebaseReference.swift"
+            timestampString = "527066769.729016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "fetchFromDataBaseAndSaveOrUpdate(userId:categoryOfDress:downloadTopUrl:downloadBottomUrl:callback:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyDresser.FirebaseReference.fetchFromDataBaseAndSaveOrUpdate (userId : Swift.String, categoryOfDress : MyDresser.DressCategory, downloadTopUrl : Swift.Optional&lt;Foundation.URL&gt;, downloadBottomUrl : Swift.Optional&lt;Foundation.URL&gt;, callback : () -&gt; ()) -&gt; ()"
+                  moduleName = "MyDresser"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shrinidhik/Desktop/MyDresserFireBase/MyDresser/Model/FirebaseReference.swift"
+                  timestampString = "527066568.532986"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "665">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyDresser.FirebaseReference.(fetchFromDataBaseAndSaveOrUpdate (userId : Swift.String, categoryOfDress : MyDresser.DressCategory, downloadTopUrl : Swift.Optional&lt;Foundation.URL&gt;, downloadBottomUrl : Swift.Optional&lt;Foundation.URL&gt;, callback : () -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "MyDresser"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shrinidhik/Desktop/MyDresserFireBase/MyDresser/Model/FirebaseReference.swift"
+                  timestampString = "527066568.535595"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "58">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyDresser/Model/FirebaseReference.swift"
+            timestampString = "527066769.729016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "fetchFromDataBaseAndSaveOrUpdate(userId:categoryOfDress:downloadTopUrl:downloadBottomUrl:callback:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyDresser/Model/FirebaseReference.swift"
+            timestampString = "527066769.729016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "fetchFromDataBaseAndSaveOrUpdate(userId:categoryOfDress:downloadTopUrl:downloadBottomUrl:callback:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyDresser/ViewControllers/ChooseOrSuggestTableViewController.swift"
+            timestampString = "527078949.362769"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
