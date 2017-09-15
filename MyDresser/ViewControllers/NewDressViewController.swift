@@ -84,10 +84,11 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
         newBottomImage.addGestureRecognizer(bottomtapGestureRecogniser)
         imagePicker.delegate = self
     }
-    func checkCameraPermission()  {
+    func checkCameraPermission(completion: @escaping ()->())  {
         let cameraMediaType = AVMediaTypeVideo
         AVCaptureDevice.requestAccess(forMediaType: cameraMediaType) { granted in
             if granted {
+                completion()
                 //                //Do operation
                 //                print("CameraOpened")
                 //                self.startDatabase = 0
@@ -111,6 +112,34 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
             }
         }
     }
+
+//    func checkCameraPermission()  {
+//        let cameraMediaType = AVMediaTypeVideo
+//        AVCaptureDevice.requestAccess(forMediaType: cameraMediaType) { granted in
+//            if granted {
+//                //                //Do operation
+//                //                print("CameraOpened")
+//                //                self.startDatabase = 0
+//                //                self.startAction = 1
+//                //                self.flag = 1
+//                //                if UIImagePickerController.isSourceTypeAvailable(.camera) {
+//                //                    self.imagePicker.allowsEditing = false
+//                //                    self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+//                //                    self.imagePicker.cameraCaptureMode = .photo
+//                //                    self.imagePicker.modalPresentationStyle = .fullScreen
+//                //                    self.present(self.imagePicker,animated: true,completion: nil)
+//                //
+//                //                } else {
+//                //                    self.noCamera()
+//                //                }
+//                //
+//                //                print("Granted access for camera")
+//            } else {
+//                self.noAccessFound()
+//                print("Denied access for camera ")
+//            }
+//        }
+//    }
     func noAccessFound(){
         
         let alert = UIAlertController(title: "MyDresser", message: "Please allow camera access in phone settings", preferredStyle: UIAlertControllerStyle.alert)
@@ -125,11 +154,12 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
         }));
         self.present(alert, animated: true, completion: nil)
     }
-    func photoLibraryAccessCheck()
+    func photoLibraryAccessCheck(completion: ()->())
     {
         let status = PHPhotoLibrary.authorizationStatus()
         
         if (status == PHAuthorizationStatus.authorized) {
+            completion()
             // Access has been granted.
             print("Access for photo library granted'")
         }
@@ -167,28 +197,38 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
         let galleryAction = UIAlertAction(title: "Select from Image Gallery", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             print("GalleryOpened")
-            self.photoLibraryAccessCheck()
             self.startDatabase = 0
             self.startAction = 1
             self.flag = 1
-            self.imagePicker.allowsEditing = false
-            self.imagePicker.sourceType = .photoLibrary
-            self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-            self.present(self.imagePicker, animated: true, completion: nil)
-        })
+            self.photoLibraryAccessCheck(completion: { ()->() in
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.sourceType = .photoLibrary
+                self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+                self.present(self.imagePicker, animated: true, completion: nil)
+
+            })
+           
+                    })
         let cameraAction = UIAlertAction(title: "Click a new pic", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
-            self.checkCameraPermission()
+           // self.checkCameraPermission()
             print("CameraOpened")
             self.startDatabase = 0
             self.startAction = 1
             self.flag = 1
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                self.imagePicker.allowsEditing = false
-                self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-                self.imagePicker.cameraCaptureMode = .photo
-                self.imagePicker.modalPresentationStyle = .fullScreen
-                self.present(self.imagePicker,animated: true,completion: nil)
+                self.checkCameraPermission(completion: {() ->() in
+                    self.imagePicker.allowsEditing = false
+                    self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                    self.imagePicker.cameraCaptureMode = .photo
+                    self.imagePicker.modalPresentationStyle = .fullScreen
+                    self.present(self.imagePicker,animated: true,completion: nil)
+                })
+//                self.imagePicker.allowsEditing = false
+//                self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+//                self.imagePicker.cameraCaptureMode = .photo
+//                self.imagePicker.modalPresentationStyle = .fullScreen
+//                self.present(self.imagePicker,animated: true,completion: nil)
                 
             } else {
                 self.noCamera()
@@ -212,29 +252,46 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
         let galleryAction = UIAlertAction(title: "Select from Image Gallery", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             print("GalleryOpened")
-            self.photoLibraryAccessCheck()
+           // self.photoLibraryAccessCheck()
             self.startDatabase = 0
             self.startAction = 1
             self.flag = 2
-            self.imagePicker.allowsEditing = false
-            self.imagePicker.sourceType = .photoLibrary
-            self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-            self.present(self.imagePicker, animated: true, completion: nil)
+
+            self.photoLibraryAccessCheck(completion: { ()->() in
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.sourceType = .photoLibrary
+                self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+                self.present(self.imagePicker, animated: true, completion: nil)
+                
+            })
+
+//                       self.imagePicker.allowsEditing = false
+//            self.imagePicker.sourceType = .photoLibrary
+//            self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+//            self.present(self.imagePicker, animated: true, completion: nil)
         })
         
         let cameraAction = UIAlertAction(title: "Click a new pic", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             print("CameraOpened")
-            self.checkCameraPermission()
+            //self.checkCameraPermission()
             self.startDatabase = 0
             self.startAction = 1
             self.flag = 2
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                self.imagePicker.allowsEditing = false
-                self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-                self.imagePicker.cameraCaptureMode = .photo
-                self.imagePicker.modalPresentationStyle = .fullScreen
-                self.present(self.imagePicker,animated: true,completion: nil)
+                self.checkCameraPermission(completion: {() ->() in
+                    self.imagePicker.allowsEditing = false
+                    self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                    self.imagePicker.cameraCaptureMode = .photo
+                    self.imagePicker.modalPresentationStyle = .fullScreen
+                    self.present(self.imagePicker,animated: true,completion: nil)
+                })
+
+//                self.imagePicker.allowsEditing = false
+//                self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+//                self.imagePicker.cameraCaptureMode = .photo
+//                self.imagePicker.modalPresentationStyle = .fullScreen
+//                self.present(self.imagePicker,animated: true,completion: nil)
             } else {
                 self.noCamera()
             }

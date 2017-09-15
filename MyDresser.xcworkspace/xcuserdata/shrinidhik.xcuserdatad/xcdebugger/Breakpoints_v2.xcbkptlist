@@ -468,13 +468,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyDresser/ViewControllers/NewDressViewController.swift"
-            timestampString = "527162914.744753"
+            timestampString = "527168781.132653"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "checkCameraPermission()"
-            landmarkType = "7">
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "NewDressViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -500,11 +500,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyDresser/ViewControllers/NewDressViewController.swift"
-            timestampString = "527163074.146232"
+            timestampString = "527169231.298972"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "startActivityIndicator(spinner:newImage:)"
             landmarkType = "7">
          </BreakpointContent>
