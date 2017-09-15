@@ -43,6 +43,11 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         categoryChosen.text = categories[row]
     }
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
+        let string = categories[row]
+        return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.white])
+    }
     
 
     @IBAction func goToNext(_ sender: Any) {
@@ -75,16 +80,4 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
                 }
         }
     }
-    
-   
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

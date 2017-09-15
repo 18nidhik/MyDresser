@@ -44,7 +44,7 @@ class Authentication{
                 
             else {
                 print("error")
-                print(error)
+                print(error ?? "error")
                 signupSuccess = false
             }
             callback(signupSuccess, uid)

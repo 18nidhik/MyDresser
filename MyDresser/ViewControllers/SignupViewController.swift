@@ -7,36 +7,31 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseDatabase
-import FirebaseAuth
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var confirmPasswordText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailIdText: UITextField!
-    var ref: DatabaseReference?
-    var databaseHandle: DatabaseHandle?
-
+    let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Sign up to MyDresser"
         emailIdText.delegate = self
         passwordText.delegate = self
         confirmPasswordText.delegate = self
-        ref = Database.database().reference()
         hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+        }
     
     @IBAction func signUpAction(_ sender: Any) {
         performSignUpAction()
     }
+    
     func performSignUpAction(){
         let enteredEmailId =  emailIdText.text
         let enteredPassword = passwordText.text
@@ -50,37 +45,18 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             showAlertController(title:"Try Again" , message: "Passwords do not match", actionTitle: "OK")
             return
         }
+        startActivityIndicator()
         Authentication.sharedInstance.createUser(emailId: emailId, password: password, callback: {(_ signupSuccess: Bool, _ uid: String)->() in
+            self.stopActivityIndicator()
             if signupSuccess == true{
                 let chooseOrSuggestTVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"ChooseOrSuggestController") as! ChooseOrSuggestTableViewController
                 chooseOrSuggestTVC.userUniqueId = uid
                 chooseOrSuggestTVC.newUser = true
                 self.navigationController?.pushViewController(chooseOrSuggestTVC, animated: true)
-
             }
         })
-//        Auth.auth().createUser(withEmail: emailId, password: password, completion: { (user, error) in
-//            
-//            if let user = user {
-//                //user found
-//                print(user)
-//                let uid = user.uid
-//                print("userid is \(uid)")
-//                print("user created")
-//                let chooseOrSuggestTVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"ChooseOrSuggestController") as! ChooseOrSuggestTableViewController
-//                chooseOrSuggestTVC.userUniqueId = uid
-//                chooseOrSuggestTVC.newUser = true
-//                self.navigationController?.pushViewController(chooseOrSuggestTVC, animated: true)
-//                
-//            }
-//                
-//            else {
-//                print("error")
-//                print(error)
-//            }
-//        })
-
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if self.confirmPasswordText.isFirstResponder {
             self.confirmPasswordText.resignFirstResponder()
@@ -91,10 +67,22 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         } else{
             self.passwordText.resignFirstResponder()
             self.confirmPasswordText.becomeFirstResponder()
-
         }
-        
         return true
-
     }
+    func startActivityIndicator(){
+        
+        spinner.center = self.view.center
+        spinner.hidesWhenStopped = true
+        spinner.activityIndicatorViewStyle =  UIActivityIndicatorViewStyle.gray
+        spinner.frame = CGRect(x: (self.view.bounds.midX - 30), y: (self.view.bounds.maxY - 30), width: 60.0, height: 60.0)
+        view.addSubview(spinner)
+        spinner.startAnimating()
+    }
+    
+    //stopSpinner
+    func stopActivityIndicator(){
+        spinner.stopAnimating()
+    }
+
 }

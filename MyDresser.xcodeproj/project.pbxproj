@@ -82,7 +82,7 @@
 		C34CA1671F6542F400150238 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C35232121F6A9EE300DC8491 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		C35274CC1F69695000011215 /* AttireOfTheDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttireOfTheDayViewController.swift; sourceTree = "<group>"; };
-		C35274CD1F69695000011215 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryViewController.swift; path = ViewControllers/CategoryViewController.swift; sourceTree = "<group>"; };
+		C35274CD1F69695000011215 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		C35274CE1F69695000011215 /* ChooseOrSuggestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseOrSuggestTableViewController.swift; sourceTree = "<group>"; };
 		C35274CF1F69695000011215 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C35274D01F69695000011215 /* NewDressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDressViewController.swift; sourceTree = "<group>"; };
@@ -170,7 +170,6 @@
 				C309DD2F1F60210900936864 /* Assets.xcassets */,
 				C309DD311F60210900936864 /* LaunchScreen.storyboard */,
 				C309DD341F60210900936864 /* Info.plist */,
-				C35274CD1F69695000011215 /* CategoryViewController.swift */,
 				C309DD2C1F60210900936864 /* MyDresser.xcdatamodeld */,
 				C34CA1671F6542F400150238 /* GoogleService-Info.plist */,
 			);
@@ -198,15 +197,16 @@
 		C35274CB1F69695000011215 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C35274CC1F69695000011215 /* AttireOfTheDayViewController.swift */,
-				C35274CE1F69695000011215 /* ChooseOrSuggestTableViewController.swift */,
+				C3417D361F6A694800722305 /* InitialViewController.swift */,
 				C35274CF1F69695000011215 /* LoginViewController.swift */,
-				C35274D01F69695000011215 /* NewDressViewController.swift */,
+				C35274D31F69695000011215 /* SignupViewController.swift */,
+				C35274CE1F69695000011215 /* ChooseOrSuggestTableViewController.swift */,
+				C35274CD1F69695000011215 /* CategoryViewController.swift */,
+				C35274D41F69695000011215 /* SuggestViewController.swift */,
 				C35274D11F69695000011215 /* PreviousOrNewTableViewController.swift */,
 				C35274D21F69695000011215 /* PreviousTableViewController.swift */,
-				C35274D31F69695000011215 /* SignupViewController.swift */,
-				C35274D41F69695000011215 /* SuggestViewController.swift */,
-				C3417D361F6A694800722305 /* InitialViewController.swift */,
+				C35274D01F69695000011215 /* NewDressViewController.swift */,
+				C35274CC1F69695000011215 /* AttireOfTheDayViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -730,6 +730,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yml.MyDresser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -749,6 +750,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yml.MyDresser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

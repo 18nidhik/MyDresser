@@ -9,22 +9,23 @@
 import UIKit
 
 class ChooseOrSuggestTableViewController: UITableViewController {
+    
     var optionsToChoose = ["Choose my Attire","Suggest Me Something"]
     var userUniqueId: String = ""
     var userId :String = ""
     var newUser = false
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         navigationItem.title = "Choose or Suggest me something"
         navigationItem.hidesBackButton = true
         userId = userUniqueId
-     }
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -43,23 +44,16 @@ class ChooseOrSuggestTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of ChooseOrSuggestTableViewCell.")
         }
         cell.optionLabel.text = optionsToChoose[indexPath.row]
-//        cell.buttonObj = {
-//                let categoryVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"CategoryViewController") as! CategoryViewController
-//                categoryVC.chooseOrSuggest = self.optionsToChoose[indexPath.row]
-//                categoryVC.userId = self.userId
-//                categoryVC.newUser = self.newUser
-//                self.navigationController?.pushViewController(categoryVC, animated: true)
-//        }
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let indexPath = tableView.indexPathForSelectedRow;
-        // print(indexPath?.row)
         let categoryVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"CategoryViewController") as! CategoryViewController
-                        categoryVC.chooseOrSuggest = self.optionsToChoose[(indexPath?.row)!]
-                        categoryVC.userId = self.userId
-                        categoryVC.newUser = self.newUser
-                        self.navigationController?.pushViewController(categoryVC, animated: true)
+        categoryVC.chooseOrSuggest = self.optionsToChoose[(indexPath?.row)!]
+        categoryVC.userId = self.userId
+        categoryVC.newUser = self.newUser
+        self.navigationController?.pushViewController(categoryVC, animated: true)
     }
-
 }

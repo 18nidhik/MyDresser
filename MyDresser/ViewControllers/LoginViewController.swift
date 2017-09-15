@@ -7,43 +7,34 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseDatabase
-import FirebaseAuth
 
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailIdText: UITextField!
+    let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+
     
-    var ref: DatabaseReference?
-    var databaseHandle: DatabaseHandle?
-    override func viewDidLoad() {
+      override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Login to MyDresser"
         self.emailIdText.delegate = self
         self.passwordText.delegate = self
-        ref = Database.database().reference()
+        
+//        self.emailIdText.text = "shrinidhi.k@ymedialabs.com"
+//        self.passwordText.text = "pbsudhass18@"
         hideKeyboardWhenTappedAround()
-        // Do any additional setup after loading the view.cxzczx
-    }
+       }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+        }
     
     @IBAction func loginAction(_ sender: Any) {
         performLoginAction()
-        
         }
 
-//    @IBAction func signUpAction(_ sender: Any) {
-//        let signUpVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"SignupController") as! SignupViewController
-//        self.navigationController?.pushViewController(signUpVC, animated: true)
-//        
-//    }
     func performLoginAction()
     {
         let enteredEmailId =  self.emailIdText.text
@@ -53,32 +44,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             showAlertController(title:"Try Again" , message: "Please fill all the details correctly", actionTitle: "OK")
             return
         }
+        startActivityIndicator()
         Authentication.sharedInstance.userLogin(emailId: emailId, password: password, callback: {(loginSuccess, uid) ->() in
+            self.stopActivityIndicator()
             if loginSuccess == true{
                 let chooseOrSuggestTVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"ChooseOrSuggestController") as! ChooseOrSuggestTableViewController
                 chooseOrSuggestTVC.userUniqueId = uid
                 chooseOrSuggestTVC.newUser = false
                 self.navigationController?.pushViewController(chooseOrSuggestTVC, animated: true)
-
             }
             else{
                  self.showAlertController(title:"Could not log in" , message: "Check entered details", actionTitle: "OK")
             }
         })
-//        Auth.auth().signIn(withEmail: emailId, password: password, completion: { (user, error) in
-//            if let user = user {
-//                print(user)
-//                let uid = user.uid
-//                print("userid is \(uid)")
-//                let chooseOrSuggestTVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"ChooseOrSuggestController") as! ChooseOrSuggestTableViewController
-//                chooseOrSuggestTVC.userUniqueId = uid
-//                chooseOrSuggestTVC.newUser = false
-//                self.navigationController?.pushViewController(chooseOrSuggestTVC, animated: true)
-//                
-//            } else {
-//                self.showAlertController(title:"Could not log in" , message: "Check entered details", actionTitle: "OK")
-//                }
-//        })
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -91,8 +69,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.emailIdText.resignFirstResponder()
             self.passwordText.becomeFirstResponder()
             }
-                    
             return true
+    }
+    func startActivityIndicator(){
+        
+        spinner.hidesWhenStopped = true
+        spinner.activityIndicatorViewStyle =  UIActivityIndicatorViewStyle.whiteLarge
+        spinner.frame = CGRect(x: (self.view.bounds.midX - 30), y: (self.view.bounds.maxY - 100), width: 60.0, height: 60.0)
+        
+        view.addSubview(spinner)
+        spinner.startAnimating()
+    }
+    
+    //stopSpinner
+    func stopActivityIndicator(){
+        spinner.stopAnimating()
     }
 }
 

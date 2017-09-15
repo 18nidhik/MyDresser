@@ -12,18 +12,17 @@ class AttireOfTheDayViewController: UIViewController {
 
     @IBOutlet weak var bottomAttireImage: UIImageView!
     @IBOutlet weak var topAttireImage: UIImageView!
-    
-    
     var topImage: UIImage? = nil
     var bottomImage: UIImage? = nil
     var newUser = false
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         navigationItem.title = "Attire of the Day"
         topAttireImage.image = topImage
         bottomAttireImage.image = bottomImage
-    }
+        }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -37,6 +36,5 @@ class AttireOfTheDayViewController: UIViewController {
             else{
             self.navigationController?.popToViewController((navigationController?.viewControllers[2])!, animated: true)
             }
-    }
-
+        }
 }

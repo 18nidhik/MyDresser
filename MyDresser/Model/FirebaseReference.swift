@@ -33,12 +33,12 @@ class FirebaseReference{
             imageData = UIImageJPEGRepresentation(image, 0.8)
             tempImageRef?.putData(imageData, metadata: nil) { metadata, error in
                 if (error != nil) {
-                    print(error)
+                    print(error ?? "error")
                 } else {
                     print("Upload successful for top")
                     let downloadTopURL = metadata!.downloadURL()!
                     self.downloadedTopUrl = downloadTopURL
-                    print("url of image downloaded is \(self.downloadedTopUrl)")
+                    print("url of image downloaded is \(String(describing: self.downloadedTopUrl))")
                     topSaveSuccess = true
                 }
                 if topSaveSuccess == true {
@@ -65,12 +65,12 @@ class FirebaseReference{
             //        }
             _ = tempImageRef1?.putData(imageData1, metadata: nil) { metadata, error in
                 if (error != nil) {
-                    print(error)
+                    print(error ?? "error")
                 } else {
                     print("Upload successful for bottom")
                     let downloadBottomURL = metadata!.downloadURL()!
                     self.downloadedBottomUrl = downloadBottomURL
-                    print("url of image downloaded is \(self.downloadedBottomUrl)")
+                    print("url of image downloaded is \(String(describing: self.downloadedBottomUrl))")
                     bottomSaveSucces = true
                 }
                 if bottomSaveSucces == true{
@@ -83,7 +83,7 @@ class FirebaseReference{
         
     }
     
-    func fetchFromDataBaseAndSaveOrUpdate(userId: String, categoryOfDress: DressCategory, downloadTopUrl :URL?,downloadBottomUrl: URL?,callback:()->()){
+    func fetchFromDataBaseAndSaveOrUpdate(userId: String, categoryOfDress: DressCategory, downloadTopUrl :URL?,downloadBottomUrl: URL?,callback:@escaping ()->()){
         databaseref = Database.database().reference()
         var indexOfDress = -1  // To check if the details of dress is already present in database.
         detailsOfDresses = []
@@ -121,6 +121,7 @@ class FirebaseReference{
                 let childRef = self.databaseref?.child(userId).child(keys[indexOfDress] as! String)
                 childRef?.updateChildValues(["numberOfTimesWorn": self.dbUpdateNumberOfTimesWorn])
             }
+            callback()
         })
         
     }
