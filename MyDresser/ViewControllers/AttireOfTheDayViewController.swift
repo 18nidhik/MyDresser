@@ -37,4 +37,7 @@ class AttireOfTheDayViewController: UIViewController {
             self.navigationController?.popToViewController((navigationController?.viewControllers[2])!, animated: true)
             }
         }
+    @IBAction func logOut(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }
