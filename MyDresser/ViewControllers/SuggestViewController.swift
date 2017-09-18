@@ -44,6 +44,7 @@ class SuggestViewController: UIViewController {
                 }
             }
             
+            // If there are no previously worn dresses in the selected category, provide an alert
             if self.numberOfDressesInTheCategorySelected == 0{
                 self.stopActivityIndicator()
                 let optionMenu = UIAlertController(title: nil, message: "No suggestions since you have no previously selected dresses in \(self.categoryOfDress.rawValue) category", preferredStyle: .alert)
@@ -78,6 +79,7 @@ class SuggestViewController: UIViewController {
                         print("\(key) :\(value)")
                     }
                 }
+                //Suggest the first attire
                 let urlTopString = self.suggessionList[0]["top"] as! String
                 self.topUrl = URL(string: urlTopString)!
                 let urlBottomString = self.suggessionList[0]["bottom"] as! String
@@ -90,6 +92,8 @@ class SuggestViewController: UIViewController {
                     self.stopActivityIndicator()
                     print("bottom pic displayed")
                 })
+                
+                // get the index of the suggested attire for updating
                 for(index,values) in detailsOfDresses.enumerated(){
                     if values["category"] as! String == self.categoryOfDress.rawValue{
                         if values["top"] as! String == self.topUrl?.absoluteString && values["bottom"] as! String == self.bottomUrl?.absoluteString{
@@ -106,6 +110,7 @@ class SuggestViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    //Start Spinner
     func startActivityIndicator(){
         spinner.center = self.view.center
         spinner.hidesWhenStopped = true
@@ -121,6 +126,7 @@ class SuggestViewController: UIViewController {
     }
     
     @IBAction func suggestedDressOk(_ sender: Any) {
+        //Update the number of times the suggested dress is worn when clicked OK
         print("update now")
         updateNumber += 1
         FirebaseReference.sharedInstance.updateDatabase(userId: self.userId, key: keys[indexOfSuggestedDress] as! String,updateNumber: self.updateNumber, callback: {()->() in

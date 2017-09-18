@@ -13,6 +13,7 @@ class Authentication{
     
     static let sharedInstance = Authentication()
     
+    // user login function
     func userLogin(emailId: String, password: String, callback: @escaping (_ loginSuccess: Bool, _ uid: String)->()){
         var loginSuccess: Bool = false
         var uid = ""
@@ -30,6 +31,7 @@ class Authentication{
         })
     }
     
+    // SignUp function
     func createUser(emailId: String, password: String, callback: @escaping (_ signupSuccess: Bool, _ uid: String)->()){
         var signupSuccess: Bool = false
         var uid = ""

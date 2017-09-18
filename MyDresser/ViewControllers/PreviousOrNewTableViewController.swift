@@ -33,6 +33,7 @@ class PreviousOrNewTableViewController: UITableViewController {
         return optionsToChoose.count
     }
     
+    // Title for each row in table view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousOrNewCell", for: indexPath) as? PreviousOrNewTableViewCell else{
@@ -42,6 +43,7 @@ class PreviousOrNewTableViewController: UITableViewController {
         return cell
     }
     
+    // When a particular row is selcted
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let indexPath = tableView.indexPathForSelectedRow;

@@ -33,6 +33,7 @@ class ChooseOrSuggestTableViewController: UITableViewController {
         self.navigationItem.setRightBarButtonItems([logout], animated: true)
         }
     
+    // when logout button is pressed
     func logoutAction() {
         
         UserDefaults.standard.set(false, forKey: "loginStatus")
@@ -55,7 +56,8 @@ class ChooseOrSuggestTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return optionsToChoose.count
     }
-
+    
+    //Label title for each row
    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChooseOrSuggestCell", for: indexPath) as? ChooseOrSuggestTableViewCell else{
@@ -65,6 +67,7 @@ class ChooseOrSuggestTableViewController: UITableViewController {
         return cell
     }
     
+    // When a particular row is selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let indexPath = tableView.indexPathForSelectedRow;

@@ -63,6 +63,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
+    //dismiss the keyboard on tapping return
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if self.confirmPasswordText.isFirstResponder {
@@ -78,6 +79,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // Start spinner
     func startActivityIndicator(){
         
         spinner.hidesWhenStopped = true
@@ -87,7 +89,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         spinner.startAnimating()
     }
     
-    //stopSpinner
+    //Stop spinner
     func stopActivityIndicator(){
         spinner.stopAnimating()
     }

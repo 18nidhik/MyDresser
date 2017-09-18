@@ -30,6 +30,8 @@ class PreviousTableViewController: UITableViewController {
                     print(self.numberOfDressesInTheCategorySelected)
                 }
             }
+            
+            // If there are no previously worn dresses in the selected category, provide an alert
             if self.numberOfDressesInTheCategorySelected == 0{
                 self.stopActivityIndicator()
                 let optionMenu = UIAlertController(title: nil, message: "No previously selected dresses in \(self.categoryOfDress.rawValue) category", preferredStyle: .alert)
@@ -41,6 +43,7 @@ class PreviousTableViewController: UITableViewController {
                 self.present(optionMenu, animated: true, completion: nil)
             }
             
+            // get the URLs of top and bottom attire to display on the table view
             for values in detailsOfDresses{
                 if values["category"] as! String == self.categoryOfDress.rawValue{
                     let topUrlString = values["top"] as! String
@@ -81,7 +84,7 @@ class PreviousTableViewController: UITableViewController {
         return urlsOfTop.count
     }
     
-    
+    // Display top and bottom attire image of previously worn dresses in each row
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousCell", for: indexPath) as? PreviousTableViewCell else{
@@ -97,6 +100,7 @@ class PreviousTableViewController: UITableViewController {
         return cell
     }
     
+    // When a previously worn dress is selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let indexPath = tableView.indexPathForSelectedRow;

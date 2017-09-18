@@ -14,8 +14,6 @@ var detailsOfDresses:[[String: AnyObject]] = []
 
 class NewDressViewController: UIViewController, UIActionSheetDelegate{
     
-   // var localTopUrl : NSURL?
-    //var localBottomUrl : NSURL?
     var userId: String = ""
     var categoryOfDress:DressCategory = .other
     var categoryOfPreviousDress :DressCategory = .other
@@ -34,8 +32,8 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
     let bottomtapGestureRecogniser = UITapGestureRecognizer()
     let imagePicker = UIImagePickerController()
     var flag = 0    //To check if the image has to be set for top or bottom
-    let labelTop = UILabel(frame: CGRect(x: 30, y: 50, width: 300, height: 50))
-    let labelBottom = UILabel(frame: CGRect(x: 30, y: 50, width: 300, height: 50))
+    let labelTop = UILabel(frame: CGRect(x: 60, y: 50, width: 300, height: 50))
+    let labelBottom = UILabel(frame: CGRect(x: 60, y: 50, width: 300, height: 50))
     
     override func viewDidLoad() {
         
@@ -54,6 +52,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
             newBottomImage.addSubview(labelBottom)
         }
         
+        // If a previously worn dress is selected display the top image
         if let topUrl = topUrlOfPreviousDress{
             startDatabase = 1
             startAction = 0
@@ -66,6 +65,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
                 print("top pic done")})
         }
         
+        // If a previously worn dress is selected display the bottom image
         if let bottomUrl = bottomUrlOfPreviousDress{
             downloadBottomUrl = bottomUrl
             labelBottom.isHidden = true
@@ -75,19 +75,23 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
                 print("bottom pic done")})
         }
         
+        // tap on top image to select a new top attire
         toptapGestureRecogniser.addTarget(self, action: #selector(NewDressViewController.tappedTopView))
         newTopImage.isUserInteractionEnabled = true
         newTopImage.addGestureRecognizer(toptapGestureRecogniser)
+        //Tap on bottom image to select a new bottom attire
         bottomtapGestureRecogniser.addTarget(self, action: #selector(NewDressViewController.tappedBottomView))
         newBottomImage.isUserInteractionEnabled = true
         newBottomImage.addGestureRecognizer(bottomtapGestureRecogniser)
         imagePicker.delegate = self
     }
     
+    // When the top image is tapped provide options to click a new image or or select from image gallery
     func tappedTopView(){
         
         print("image tapped")
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+        // When image gallery is selected
         let galleryAction = UIAlertAction(title: "Select from Image Gallery", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             print("GalleryOpened")
@@ -101,6 +105,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
                 self.present(self.imagePicker, animated: true, completion: nil)
             })
         })
+        // When camera option is selected
         let cameraAction = UIAlertAction(title: "Click a new pic", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             print("CameraOpened")
@@ -119,6 +124,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
                 self.noCamera()
             }
         })
+        // When cancel is seleted
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
             (alert: UIAlertAction!) -> Void in
             print("Cancelled")
@@ -130,10 +136,12 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
         self.present(optionMenu, animated: true, completion: nil)
     }
     
+    // When the bottom image is tapped provide options to click a new image or or select from image gallery
     func tappedBottomView() {
         
         print("image tapped")
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+        // When image galley is selected
         let galleryAction = UIAlertAction(title: "Select from Image Gallery", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             print("GalleryOpened")
@@ -148,6 +156,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
                 
             })
         })
+        // When camera option is selected
         let cameraAction = UIAlertAction(title: "Click a new pic", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             print("CameraOpened")
@@ -176,13 +185,15 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
         optionMenu.addAction(cancelAction)
         self.present(optionMenu, animated: true, completion: nil)
     }
-    
+    //When cancel is selected
     func noCamera(){
         let alertVC = UIAlertController(title: "No Camera",message: "Sorry, this device has no camera",preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK",style:.default,handler: nil)
         alertVC.addAction(okAction)
         present(alertVC,animated: true,completion: nil)
     }
+    
+    // Check if the camera access permission is granted or not
     func checkCameraPermission(completion: @escaping ()->())  {
         
         let cameraMediaType = AVMediaTypeVideo
@@ -196,6 +207,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
         }
     }
     
+    //Check if Photo library access permission is granted or not
     func photoLibraryAccessCheck(completion: ()->())
     {
         let status = PHPhotoLibrary.authorizationStatus()
@@ -210,6 +222,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
         }
     }
     
+    // When the camera or gallery access is denied provide alert to the user to go to sttings and enable it
     func noAccessFound(){
         
         let alert = UIAlertController(title: "MyDresser", message: "Please allow camera access in phone settings", preferredStyle: UIAlertControllerStyle.alert)
@@ -234,7 +247,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
         newImage.addSubview(spinner)
         spinner.startAnimating()    }
     
-    //stopSpinner
+    //stop spinner
     func stopActivityIndicator(spinner:UIActivityIndicatorView){
         spinner.stopAnimating()
     }
@@ -279,6 +292,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
     }
 }
 
+// Image picker delegate methods
 extension NewDressViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         

@@ -32,18 +32,22 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return 1
     }
     
+    // Title for each row
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return categories[row]
     }
     
+    // Number of rows in each component
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return categories.count
     }
     
+    // On each category click action
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         categoryChosen.text = categories[row]
     }
     
+    // Provide colour for the text in each row
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let string = categories[row]
         return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.white])
@@ -73,6 +77,7 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
                 self.navigationController?.pushViewController(suggestVC, animated: true)
                 }
             }
+                // if the category is not selected alert the user asking him to select the category
             else{
                 showAlertController(title:"Select Category", message: "Select the category of the attire before you proceed", actionTitle: "OK")
             }
