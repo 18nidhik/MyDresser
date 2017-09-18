@@ -9,6 +9,7 @@
 import UIKit
 
 class PreviousTableViewController: UITableViewController {
+    
     var categoryOfDress: DressCategory = .other
     var userId: String = ""
     var urlsOfTop :[URL] = []
@@ -16,9 +17,9 @@ class PreviousTableViewController: UITableViewController {
     var newUser = false
     var numberOfDressesInTheCategorySelected = 0
     let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-
-
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         navigationItem.title = "Previously worn"
         startActivityIndicator()
@@ -32,7 +33,6 @@ class PreviousTableViewController: UITableViewController {
             if self.numberOfDressesInTheCategorySelected == 0{
                 self.stopActivityIndicator()
                 let optionMenu = UIAlertController(title: nil, message: "No previously selected dresses in \(self.categoryOfDress.rawValue) category", preferredStyle: .alert)
-                
                 let cantSuggest = UIAlertAction(title: "OK", style: .default, handler: {
                     (alert: UIAlertAction!) -> Void in
                     self.navigationController?.popViewController(animated: true)
@@ -53,22 +53,21 @@ class PreviousTableViewController: UITableViewController {
             }
             self.tableView.reloadData()
         })
-}
+    }
+    
     //start spinner
     func startActivityIndicator(){
-    spinner.hidesWhenStopped = true
-    spinner.activityIndicatorViewStyle =  UIActivityIndicatorViewStyle.gray
-    spinner.frame = CGRect(x: (tableView.bounds.midX - 30), y: (tableView.bounds.midY - 30), width: 60.0, height: 60.0)
-    view.addSubview(spinner)
-    spinner.startAnimating()
+        spinner.hidesWhenStopped = true
+        spinner.activityIndicatorViewStyle =  UIActivityIndicatorViewStyle.gray
+        spinner.frame = CGRect(x: (tableView.bounds.midX - 30), y: (tableView.bounds.midY - 30), width: 60.0, height: 60.0)
+        view.addSubview(spinner)
+        spinner.startAnimating()
     }
     
     //stopSpinner
     func stopActivityIndicator(){
         spinner.stopAnimating()
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -77,33 +76,30 @@ class PreviousTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return urlsOfTop.count
     }
-
-  
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousCell", for: indexPath) as? PreviousTableViewCell else{
-            
             fatalError("The dequeued cell is not an instance of ChooseOrSuggestTableViewCell.")
         }
-        
         FirebaseReference.sharedInstance.downloadImageFromFirebase(downloadUrl: urlsOfTop[indexPath.row],newImage: cell.topPreviousImage, callback: {() ->() in
             print("top image")
         })
-
         FirebaseReference.sharedInstance.downloadImageFromFirebase(downloadUrl: urlsOfBottom[indexPath.row],newImage: cell.bottomPreviousImage, callback: {() ->() in
-            print("botom image")
+            print("bottom image")
         })
         stopActivityIndicator()
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let indexPath = tableView.indexPathForSelectedRow;
-       // print(indexPath?.row)
         let newDressVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"NewDressController") as! NewDressViewController
         newDressVC.categoryOfPreviousDress  = categoryOfDress
         newDressVC.topUrlOfPreviousDress = urlsOfTop[(indexPath?.row)!]

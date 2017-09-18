@@ -30,14 +30,14 @@ class AttireOfTheDayViewController: UIViewController {
     
     
     @IBAction func categorySelected(_ sender: Any) {
+        
         if newUser == true{
-            self.navigationController?.popToViewController((navigationController?.viewControllers[2])!, animated: true)
+           self.navigationController?.popToViewController((navigationController?.viewControllers[2])!, animated: true)
             }
             else{
-            self.navigationController?.popToViewController((navigationController?.viewControllers[2])!, animated: true)
+             print(newUser)
+            // self.navigationController?.popToViewController((navigationController?.viewControllers[2])!, animated: true)
+             self.navigationController?.popToRootViewController(animated: true)
             }
         }
-    @IBAction func logOut(_ sender: Any) {
-        navigationController?.popToRootViewController(animated: true)
-    }
 }

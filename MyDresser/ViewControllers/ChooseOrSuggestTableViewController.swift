@@ -13,22 +13,41 @@ class ChooseOrSuggestTableViewController: UITableViewController {
     var optionsToChoose = ["Choose my Attire","Suggest Me Something"]
     var userUniqueId: String = ""
     var userId :String = ""
-    var newUser = false
+    var newUser = true
+    var logout:UIBarButtonItem = UIBarButtonItem()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        navigationItem.title = "Choose or Suggest me something"
+        navigationItem.title = "Choose or Suggest"
+        if let uniqueId = UserDefaults.standard.string(forKey: "userID"){
+        userUniqueId = uniqueId
+            print(uniqueId)
+        }
+        newUser = UserDefaults.standard.bool(forKey: "newUser")
+        print("new user status is \(newUser)")
         navigationItem.hidesBackButton = true
         userId = userUniqueId
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        let logout = UIBarButtonItem.init(title: "Logout", style: .plain, target: self, action: #selector(logoutAction))
+        self.navigationItem.setRightBarButtonItems([logout], animated: true)
         }
-
+    
+    func logoutAction() {
+        
+        UserDefaults.standard.set(false, forKey: "loginStatus")
+        //UserDefaults.standard.removeObject(forKey: "userID")
+        let InitialVc = self.storyboard?.instantiateViewController(withIdentifier: "InitialController")
+        let InitialNavigationVC = UINavigationController(rootViewController: InitialVc!)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = InitialNavigationVC
+         navigationController?.popToRootViewController(animated: true)
+        }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -37,8 +56,7 @@ class ChooseOrSuggestTableViewController: UITableViewController {
         return optionsToChoose.count
     }
 
-   
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChooseOrSuggestCell", for: indexPath) as? ChooseOrSuggestTableViewCell else{
             fatalError("The dequeued cell is not an instance of ChooseOrSuggestTableViewCell.")

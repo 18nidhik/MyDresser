@@ -14,25 +14,27 @@ class PreviousOrNewTableViewController: UITableViewController {
     var optionsToChoose = ["Select from previously worn dresses","Select a new dress"]
     var userId: String = ""
     var newUser = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Previously worn dress or new dress"
-         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-           }
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return optionsToChoose.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousOrNewCell", for: indexPath) as? PreviousOrNewTableViewCell else{
             fatalError("The dequeued cell is not an instance of ChooseOrSuggestTableViewCell.")
         }
@@ -41,8 +43,9 @@ class PreviousOrNewTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let indexPath = tableView.indexPathForSelectedRow;
-           if indexPath?.row == 0{
+        if indexPath?.row == 0{
             let previousVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"PreviousController") as! PreviousTableViewController
             previousVC.categoryOfDress = self.categoryOfDress
             previousVC.userId = self.userId
@@ -55,6 +58,6 @@ class PreviousOrNewTableViewController: UITableViewController {
             newDressVC.userId = self.userId
             newDressVC.newUser = self.newUser
             self.navigationController?.pushViewController(newDressVC, animated: true)
-            }
         }
+    }
 }

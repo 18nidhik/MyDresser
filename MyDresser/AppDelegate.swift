@@ -1,7 +1,7 @@
 //
 //  AppDelegate.swift
 //  MyDresser
-//
+//Item
 //  Created by Shrinidhi K on 06/09/17.
 //  Copyright © 2017 Shrinidhi K. All rights reserved.
 //
@@ -19,6 +19,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        let loginStatus = UserDefaults.standard.bool(forKey: "loginStatus")
+        if loginStatus == true{
+            UserDefaults.standard.set(false, forKey: "newUser")
+            print("User previously logged in.")
+            print(" users login status is \(loginStatus)")
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let chooseOrSuggestVC = storyboard.instantiateViewController(withIdentifier:"ChooseOrSuggestController" ) as! ChooseOrSuggestTableViewController
+            let navigationController = UINavigationController(rootViewController: chooseOrSuggestVC)
+            self.window?.rootViewController = navigationController
+            self.window?.makeKeyAndVisible()
+        }
+        else{
+            UserDefaults.standard.set(true, forKey: "newUser")
+            print("User  just logged in.")
+            print(" users login status is \(loginStatus)")
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier:"InitialController" ) as! InitialViewController
+            let navigationController = UINavigationController(rootViewController: initialViewController)
+            self.window?.rootViewController = navigationController
+            self.window?.makeKeyAndVisible()
+        }
         return true
     }
 

@@ -18,15 +18,13 @@ class InitialViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-
     @IBAction func loginAction(_ sender: Any) {
         let loginVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"LoginController") as! LoginViewController
         self.navigationController?.pushViewController( loginVC, animated: true)
-
     }
+    
     @IBAction func signUpAction(_ sender: Any) {
         let signUpVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"SignupController") as! SignupViewController
         self.navigationController?.pushViewController(signUpVC, animated: true)
-
     }
 }

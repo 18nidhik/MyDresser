@@ -14,20 +14,20 @@
         <scene sceneID="lkF-Ih-mSx">
             <objects>
                 <tableViewController storyboardIdentifier="ChooseOrSuggestController" id="7qM-Xs-FRO" customClass="ChooseOrSuggestTableViewController" customModule="MyDresser" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" id="1R4-tr-PgE">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" id="1R4-tr-PgE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ChooseOrSuggestCell" textLabel="jVM-Pk-qEN" rowHeight="111" style="IBUITableViewCellStyleDefault" id="8cA-lG-Z84" customClass="ChooseOrSuggestTableViewCell" customModule="MyDresser" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="111"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ChooseOrSuggestCell" textLabel="jVM-Pk-qEN" rowHeight="110" style="IBUITableViewCellStyleDefault" id="8cA-lG-Z84" customClass="ChooseOrSuggestTableViewCell" customModule="MyDresser" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8cA-lG-Z84" id="Hqe-6g-BdA">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="110.66666666666667"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="109.66666666666667"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jVM-Pk-qEN">
-                                            <rect key="frame" x="20" y="0.0" width="356" height="110.66666666666667"/>
+                                            <rect key="frame" x="20" y="0.0" width="356" height="109.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -45,7 +45,9 @@
                             <outlet property="delegate" destination="7qM-Xs-FRO" id="JX6-12-UZe"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="gb3-kd-thd"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDa-Jt-a29" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -413,33 +415,21 @@
                                     <action selector="categorySelected:" destination="xvT-g8-VWi" eventType="touchUpInside" id="2As-s7-U2x"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwT-A7-POX">
-                                <rect key="frame" x="157.66666666666669" y="530.66666666666663" width="100.00000000000006" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logOut:" destination="xvT-g8-VWi" eventType="touchUpInside" id="HEz-g4-khi"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2237455619" green="0.44355886839999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="OA5-5i-5fg" firstAttribute="top" secondItem="fmK-TC-hUl" secondAttribute="bottom" constant="50" id="2Gb-4B-msO"/>
                             <constraint firstItem="fmK-TC-hUl" firstAttribute="width" secondItem="4O3-sc-Gds" secondAttribute="width" id="2le-xP-TDZ"/>
                             <constraint firstAttribute="trailing" secondItem="Rre-1R-co6" secondAttribute="trailing" constant="105" id="AAE-sb-ZGr"/>
-                            <constraint firstItem="jwT-A7-POX" firstAttribute="width" secondItem="OA5-5i-5fg" secondAttribute="width" id="AoM-uq-3Zb"/>
                             <constraint firstItem="fmK-TC-hUl" firstAttribute="height" secondItem="4O3-sc-Gds" secondAttribute="height" id="EJv-0a-CaZ"/>
-                            <constraint firstItem="jwT-A7-POX" firstAttribute="height" secondItem="OA5-5i-5fg" secondAttribute="height" id="G2Q-Z7-PvW"/>
                             <constraint firstItem="4O3-sc-Gds" firstAttribute="leading" secondItem="AsQ-rm-hQB" secondAttribute="leading" constant="80" id="GYm-wl-mjl"/>
                             <constraint firstItem="Rre-1R-co6" firstAttribute="top" secondItem="XGc-vk-3Sy" secondAttribute="bottom" constant="40" id="Gth-10-MBZ"/>
                             <constraint firstItem="4O3-sc-Gds" firstAttribute="top" secondItem="Rre-1R-co6" secondAttribute="bottom" constant="40" id="MAT-WX-Kja"/>
                             <constraint firstAttribute="trailing" secondItem="4O3-sc-Gds" secondAttribute="trailing" constant="84" id="Que-wp-3xB"/>
-                            <constraint firstItem="jwT-A7-POX" firstAttribute="centerX" secondItem="AsQ-rm-hQB" secondAttribute="centerX" id="Rtz-hY-cT8"/>
                             <constraint firstItem="Rre-1R-co6" firstAttribute="leading" secondItem="AsQ-rm-hQB" secondAttribute="leading" constant="104" id="YrM-wd-pDX"/>
                             <constraint firstItem="fmK-TC-hUl" firstAttribute="top" secondItem="4O3-sc-Gds" secondAttribute="bottom" id="hqH-IG-UXb"/>
                             <constraint firstItem="OA5-5i-5fg" firstAttribute="centerX" secondItem="AsQ-rm-hQB" secondAttribute="centerX" id="jK0-ZX-My3"/>
                             <constraint firstItem="fmK-TC-hUl" firstAttribute="centerX" secondItem="4O3-sc-Gds" secondAttribute="centerX" id="qTI-Ct-FFU"/>
-                            <constraint firstItem="jwT-A7-POX" firstAttribute="top" secondItem="OA5-5i-5fg" secondAttribute="bottom" constant="30" id="uiu-Zf-LlY"/>
                         </constraints>
                     </view>
                     <connections>
@@ -579,7 +569,7 @@
         <!--Initial View Controller-->
         <scene sceneID="cCN-Uw-oAu">
             <objects>
-                <viewController storyboardIdentifier="&quot;InitialController&quot;" id="HzE-ck-xtV" customClass="InitialViewController" customModule="MyDresser" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" id="HzE-ck-xtV" customClass="InitialViewController" customModule="MyDresser" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tkv-9n-8ty"/>
                         <viewControllerLayoutGuide type="bottom" id="QM7-J0-oTt"/>

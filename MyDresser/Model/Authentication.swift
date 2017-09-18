@@ -12,6 +12,7 @@ import FirebaseAuth
 class Authentication{
     
     static let sharedInstance = Authentication()
+    
     func userLogin(emailId: String, password: String, callback: @escaping (_ loginSuccess: Bool, _ uid: String)->()){
         var loginSuccess: Bool = false
         var uid = ""
@@ -21,18 +22,18 @@ class Authentication{
                 uid = user.uid
                 print("userid is \(uid)")
                 loginSuccess = true
-            } else {
+            }
+            else {
               loginSuccess = false
             }
             callback(loginSuccess, uid)
         })
-        
     }
+    
     func createUser(emailId: String, password: String, callback: @escaping (_ signupSuccess: Bool, _ uid: String)->()){
         var signupSuccess: Bool = false
         var uid = ""
         Auth.auth().createUser(withEmail: emailId, password: password, completion: { (user, error) in
-            
             if let user = user {
                 //user found
                 print(user)
@@ -41,7 +42,6 @@ class Authentication{
                 print("user created")
                 signupSuccess = true
             }
-                
             else {
                 print("error")
                 print(error ?? "error")
@@ -49,6 +49,5 @@ class Authentication{
             }
             callback(signupSuccess, uid)
         })
-
     }
 }

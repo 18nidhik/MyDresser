@@ -340,7 +340,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyDresser/Model/FirebaseReference.swift"
-            timestampString = "527066769.729016"
+            timestampString = "527234519.119172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -356,12 +356,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyDresser/Model/FirebaseReference.swift"
-            timestampString = "527066769.729016"
+            timestampString = "527234519.119172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "saveTopImageToStorage(userId:newTopImage:categoryOfDress:callback:)"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "saveImageToStorage(userId:newImage:categoryOfDress:callback:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -372,11 +372,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyDresser/Model/FirebaseReference.swift"
-            timestampString = "527066769.729016"
+            timestampString = "527394536.492177"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "fetchFromDataBaseAndSaveOrUpdate(userId:categoryOfDress:downloadTopUrl:downloadBottomUrl:callback:)"
             landmarkType = "7">
             <Locations>
@@ -420,11 +420,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyDresser/Model/FirebaseReference.swift"
-            timestampString = "527066769.729016"
+            timestampString = "527394536.492177"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "fetchFromDataBaseAndSaveOrUpdate(userId:categoryOfDress:downloadTopUrl:downloadBottomUrl:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -436,11 +436,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyDresser/Model/FirebaseReference.swift"
-            timestampString = "527066769.729016"
+            timestampString = "527394536.492177"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "fetchFromDataBaseAndSaveOrUpdate(userId:categoryOfDress:downloadTopUrl:downloadBottomUrl:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -452,11 +452,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyDresser/ViewControllers/ChooseOrSuggestTableViewController.swift"
-            timestampString = "527090151.638175"
+            timestampString = "527247776.429239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -468,27 +468,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyDresser/ViewControllers/NewDressViewController.swift"
-            timestampString = "527168781.132653"
+            timestampString = "527247776.429239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "NewDressViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyDresser/ViewControllers/NewDressViewController.swift"
-            timestampString = "527161745.328957"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -500,28 +484,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyDresser/ViewControllers/NewDressViewController.swift"
-            timestampString = "527169231.298972"
+            timestampString = "527247776.429239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "startActivityIndicator(spinner:newImage:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyDresser/ViewControllers/SuggestViewController.swift"
-            timestampString = "527163501.174252"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "startActivityIndicator()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -28,7 +28,6 @@
 		C35274DB1F69695000011215 /* PreviousTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274D21F69695000011215 /* PreviousTableViewController.swift */; };
 		C35274DC1F69695000011215 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274D31F69695000011215 /* SignupViewController.swift */; };
 		C35274DD1F69695000011215 /* SuggestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274D41F69695000011215 /* SuggestViewController.swift */; };
-		C35274E11F6969F000011215 /* CasualDress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274DF1F6969F000011215 /* CasualDress.swift */; };
 		C35274E21F6969F000011215 /* DressCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274E01F6969F000011215 /* DressCategory.swift */; };
 		C35274E71F696A7200011215 /* ChooseOrSuggestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274E41F696A7200011215 /* ChooseOrSuggestTableViewCell.swift */; };
 		C35274E81F696A7200011215 /* PreviousOrNewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274E51F696A7200011215 /* PreviousOrNewTableViewCell.swift */; };
@@ -90,7 +89,6 @@
 		C35274D21F69695000011215 /* PreviousTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousTableViewController.swift; sourceTree = "<group>"; };
 		C35274D31F69695000011215 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C35274D41F69695000011215 /* SuggestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestViewController.swift; sourceTree = "<group>"; };
-		C35274DF1F6969F000011215 /* CasualDress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasualDress.swift; sourceTree = "<group>"; };
 		C35274E01F6969F000011215 /* DressCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DressCategory.swift; sourceTree = "<group>"; };
 		C35274E41F696A7200011215 /* ChooseOrSuggestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseOrSuggestTableViewCell.swift; sourceTree = "<group>"; };
 		C35274E51F696A7200011215 /* PreviousOrNewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousOrNewTableViewCell.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 		C35274DE1F6969F000011215 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C35274DF1F6969F000011215 /* CasualDress.swift */,
 				C35274E01F6969F000011215 /* DressCategory.swift */,
 				C38419231F697F61008A8C5B /* Utilities.swift */,
 				C3417D341F6A49AA00722305 /* FirebaseReference.swift */,
@@ -553,7 +550,6 @@
 				C35232131F6A9EE300DC8491 /* Authentication.swift in Sources */,
 				C309DD2E1F60210900936864 /* MyDresser.xcdatamodeld in Sources */,
 				C35274E91F696A7200011215 /* PreviousTableViewCell.swift in Sources */,
-				C35274E11F6969F000011215 /* CasualDress.swift in Sources */,
 				C35274D81F69695000011215 /* LoginViewController.swift in Sources */,
 				C35274D51F69695000011215 /* AttireOfTheDayViewController.swift in Sources */,
 				C35274D91F69695000011215 /* NewDressViewController.swift in Sources */,

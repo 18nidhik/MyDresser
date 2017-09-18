@@ -16,6 +16,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
   
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         navigationItem.title = "Sign up to MyDresser"
         emailIdText.delegate = self
@@ -49,15 +50,21 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         Authentication.sharedInstance.createUser(emailId: emailId, password: password, callback: {(_ signupSuccess: Bool, _ uid: String)->() in
             self.stopActivityIndicator()
             if signupSuccess == true{
+                UserDefaults.standard.set(uid, forKey: "userID")
+                UserDefaults.standard.set(true, forKey: "loginStatus")
+                UserDefaults.standard.set(true, forKey: "newUser")
+                let login = UserDefaults.standard.bool(forKey: "loginStatus")
+                print("user defaults value of login status is \(login)")
                 let chooseOrSuggestTVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"ChooseOrSuggestController") as! ChooseOrSuggestTableViewController
-                chooseOrSuggestTVC.userUniqueId = uid
-                chooseOrSuggestTVC.newUser = true
+               // chooseOrSuggestTVC.userUniqueId = uid
+               // chooseOrSuggestTVC.newUser = true
                 self.navigationController?.pushViewController(chooseOrSuggestTVC, animated: true)
             }
         })
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         if self.confirmPasswordText.isFirstResponder {
             self.confirmPasswordText.resignFirstResponder()
             performSignUpAction()
@@ -70,12 +77,12 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+    
     func startActivityIndicator(){
         
-        spinner.center = self.view.center
         spinner.hidesWhenStopped = true
-        spinner.activityIndicatorViewStyle =  UIActivityIndicatorViewStyle.gray
-        spinner.frame = CGRect(x: (self.view.bounds.midX - 30), y: (self.view.bounds.maxY - 30), width: 60.0, height: 60.0)
+        spinner.activityIndicatorViewStyle =  UIActivityIndicatorViewStyle.whiteLarge
+        spinner.frame = CGRect(x: (self.view.bounds.midX - 30), y: (self.view.bounds.maxY - 100), width: 60.0, height: 60.0)
         view.addSubview(spinner)
         spinner.startAnimating()
     }
@@ -84,5 +91,4 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     func stopActivityIndicator(){
         spinner.stopAnimating()
     }
-
 }

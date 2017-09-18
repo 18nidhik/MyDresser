@@ -13,75 +13,72 @@ import FirebaseStorage
 
 class FirebaseReference{
     var databaseref : DatabaseReference?
-    var databaseHandle :DatabaseHandle?
+   // var databaseHandle :DatabaseHandle?
     var storageRef: StorageReference?
-    var downloadedTopUrl :URL?
-    var downloadedBottomUrl :URL?
+    var downloadedUrl :URL?
+    //var downloadedBottomUrl :URL?
     var dbUpdateNumberOfTimesWorn = 0
     
     static let sharedInstance = FirebaseReference()
-    func saveTopImageToStorage(userId: String, newTopImage: UIImageView,categoryOfDress: DressCategory, callback: @escaping (_ downloadedTopUrl: URL?) ->()) {
+    
+    func saveImageToStorage(userId: String, newImage: UIImageView,categoryOfDress: DressCategory, callback: @escaping (_ downloadedUrl: URL?) ->()) {
         storageRef = Storage.storage().reference()
         
-        var topSaveSuccess = false
+        var SaveSuccess = false
         // save image of top in firebase
         let tempImageRef = storageRef?.child(userId).child(categoryOfDress.rawValue).child((NSUUID().uuidString))
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         var imageData: Data!
-        if let image = newTopImage.image {
+        if let image = newImage.image {
             imageData = UIImageJPEGRepresentation(image, 0.8)
             tempImageRef?.putData(imageData, metadata: nil) { metadata, error in
                 if (error != nil) {
                     print(error ?? "error")
                 } else {
-                    print("Upload successful for top")
+                    print("Upload successful")
                     let downloadTopURL = metadata!.downloadURL()!
-                    self.downloadedTopUrl = downloadTopURL
-                    print("url of image downloaded is \(String(describing: self.downloadedTopUrl))")
-                    topSaveSuccess = true
+                    self.downloadedUrl = downloadTopURL
+                    print("url of image downloaded is \(String(describing: self.downloadedUrl))")
+                    SaveSuccess = true
                 }
-                if topSaveSuccess == true {
+                if SaveSuccess == true {
                     print("call back just called")
-                    callback(self.downloadedTopUrl)
-                    
+                    callback(self.downloadedUrl)
                 }
             }
-            
-            
         }
     }
-    func saveBottomImageToStorage(userId: String, newBottomImage: UIImageView,categoryOfDress: DressCategory, callback: @escaping (_ downloadedBottomUrl: URL?) ->()){
-        //save image of bottom in firebase
-        var bottomSaveSucces = false
-        let tempImageRef1 = self.storageRef?.child(userId).child(categoryOfDress.rawValue).child((NSUUID().uuidString))
-        let metadata1 = StorageMetadata()
-        metadata1.contentType = "image/jpeg"
-        var imageData1: Data!
-        if let image1 = newBottomImage.image {
-            imageData1 = UIImageJPEGRepresentation(image1, 0.8)        //convert from UIImage to Data
-            //        } else {
-            //            print("Could not find image")
-            //        }
-            _ = tempImageRef1?.putData(imageData1, metadata: nil) { metadata, error in
-                if (error != nil) {
-                    print(error ?? "error")
-                } else {
-                    print("Upload successful for bottom")
-                    let downloadBottomURL = metadata!.downloadURL()!
-                    self.downloadedBottomUrl = downloadBottomURL
-                    print("url of image downloaded is \(String(describing: self.downloadedBottomUrl))")
-                    bottomSaveSucces = true
-                }
-                if bottomSaveSucces == true{
-                    callback(self.downloadedBottomUrl)
-                }
-                
-            }
-        }
-        
-        
-    }
+    
+//    func saveBottomImageToStorage(userId: String, newBottomImage: UIImageView,categoryOfDress: DressCategory, callback: @escaping (_ downloadedBottomUrl: URL?) ->()){
+//        //save image of bottom in firebase
+//        var bottomSaveSucces = false
+//        let tempImageRef1 = self.storageRef?.child(userId).child(categoryOfDress.rawValue).child((NSUUID().uuidString))
+//        let metadata1 = StorageMetadata()
+//        metadata1.contentType = "image/jpeg"
+//        var imageData1: Data!
+//        if let image1 = newBottomImage.image {
+//            imageData1 = UIImageJPEGRepresentation(image1, 0.8)        //convert from UIImage to Data
+//            //        } else {
+//            //            print("Could not find image")
+//            //        }
+//            _ = tempImageRef1?.putData(imageData1, metadata: nil) { metadata, error in
+//                if (error != nil) {
+//                    print(error ?? "error")
+//                } else {
+//                    print("Upload successful for bottom")
+//                    let downloadBottomURL = metadata!.downloadURL()!
+//                    self.downloadedBottomUrl = downloadBottomURL
+//                    print("url of image downloaded is \(String(describing: self.downloadedBottomUrl))")
+//                    bottomSaveSucces = true
+//                }
+//                if bottomSaveSucces == true{
+//                    callback(self.downloadedBottomUrl)
+//                }
+//                
+//            }
+//        }
+//    }
     
     func fetchFromDataBaseAndSaveOrUpdate(userId: String, categoryOfDress: DressCategory, downloadTopUrl :URL?,downloadBottomUrl: URL?,callback:@escaping ()->()){
         databaseref = Database.database().reference()
@@ -123,39 +120,38 @@ class FirebaseReference{
             }
             callback()
         })
-        
     }
-
-func downloadImageFromFirebase(downloadUrl: URL?,newImage :UIImageView, callback: @escaping () ->()){
-    Storage.storage().reference(forURL: (downloadUrl?.absoluteString)!).getData(maxSize: 3 * 1024 * 1024, completion: { (data:Data?, error:Error?) in
-        //debugPrint("error : \(error?.localizedDescription) and Data : \(data)")
-        let pic = UIImage(data: data!)
-        newImage.image = pic
-        callback()
-    })
     
-}
-    func fetchDetailsFromDatabase(userId: String, callback: @escaping ()->()){
-    databaseref = Database.database().reference()
-    detailsOfDresses = []
-    keys = []
-    databaseref?.child(userId).observeSingleEvent(of: .value, with: {(snapshot) in
-        if let dictionary = snapshot.value as? NSDictionary {
-            for(key,value) in dictionary{
-                detailsOfDresses.append(value as! [String : AnyObject] )
-                keys.append(key)
-            }
-        }
-        callback()
-        
-    })
+    func downloadImageFromFirebase(downloadUrl: URL?,newImage :UIImageView, callback: @escaping () ->()){
+        Storage.storage().reference(forURL: (downloadUrl?.absoluteString)!).getData(maxSize: 3 * 1024 * 1024, completion: { (data:Data?, error:Error?) in
+            //debugPrint("error : \(error?.localizedDescription) and Data : \(data)")
+            let pic = UIImage(data: data!)
+            newImage.image = pic
+            callback()
+        })
     }
+    
+    func fetchDetailsFromDatabase(userId: String, callback: @escaping ()->()){
+        databaseref = Database.database().reference()
+        detailsOfDresses = []
+        keys = []
+        databaseref?.child(userId).observeSingleEvent(of: .value, with: {(snapshot) in
+            if let dictionary = snapshot.value as? NSDictionary {
+                for(key,value) in dictionary{
+                    detailsOfDresses.append(value as! [String : AnyObject] )
+                    keys.append(key)
+                }
+            }
+            callback()
+            
+        })
+    }
+    
     func updateDatabase(userId: String, key: String,updateNumber: Int, callback: ()->()){
         databaseref = Database.database().reference()
         let childRef = databaseref?.child(userId).child(key)
         childRef?.updateChildValues(["numberOfTimesWorn": updateNumber])
         callback()
-
+        
     }
-    
 }
