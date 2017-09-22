@@ -14,6 +14,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailIdText: UITextField!
     let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    var login:UIBarButtonItem = UIBarButtonItem()
     
     override func viewDidLoad() {
         
@@ -21,16 +22,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         navigationItem.title = "Login to MyDresser"
         self.emailIdText.delegate = self
         self.passwordText.delegate = self
+        emailIdText.keyboardType = .emailAddress
         hideKeyboardWhenTappedAround()
+        let login = UIBarButtonItem.init(title: "Login", style: .plain, target: self, action: #selector(loginAction))
+        self.navigationItem.setRightBarButtonItems([login], animated: true)
        }
-
+    
+    func loginAction(){
+         performLoginAction()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         }
-    
-    @IBAction func loginAction(_ sender: Any) {
-        performLoginAction()
-        }
+    override func viewWillAppear(_ animated: Bool) {
+       
+        super.viewWillAppear(animated)
+         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 
     func performLoginAction(){
         
@@ -80,7 +88,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         spinner.hidesWhenStopped = true
         spinner.activityIndicatorViewStyle =  UIActivityIndicatorViewStyle.whiteLarge
-        spinner.frame = CGRect(x: (self.view.bounds.midX - 30), y: (self.view.bounds.maxY - 100), width: 60.0, height: 60.0)
+        spinner.frame = CGRect(x: (self.view.bounds.midX - 30), y: (self.view.bounds.maxY - 160), width: 60.0, height: 60.0)
         view.addSubview(spinner)
         spinner.startAnimating()
     }

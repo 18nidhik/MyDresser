@@ -47,6 +47,10 @@ class Authentication{
             else {
                 print("error")
                 print(error ?? "error")
+//                let alertController = UIAlertController(title:"Try Again", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+//                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+//                present(alertController, animated: true, completion: nil)
+                uid = (error?.localizedDescription)!
                 signupSuccess = false
             }
             callback(signupSuccess, uid)

@@ -10,8 +10,12 @@ import UIKit
 
 class InitialViewController: UIViewController {
 
+    @IBOutlet weak var buttonTop: NSLayoutConstraint!
+    @IBOutlet weak var labelTop: NSLayoutConstraint!
+    @IBOutlet weak var myDresserLabe: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+      animate()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,5 +32,23 @@ class InitialViewController: UIViewController {
     @IBAction func signUpAction(_ sender: Any) {
         let signUpVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"SignupController") as! SignupViewController
         self.navigationController?.pushViewController(signUpVC, animated: true)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        super.viewWillAppear(animated)
+    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//        super.viewWillDisappear(animated)
+//    }
+    func animate()
+    {
+                UIView.animate(withDuration: 2, delay: 2, options: .curveEaseIn, animations: {
+                    self.buttonTop.constant = 215
+                    self.labelTop.constant = 60
+                    self.view.layoutIfNeeded()
+                }) { (flag) in
+
+                }
     }
 }

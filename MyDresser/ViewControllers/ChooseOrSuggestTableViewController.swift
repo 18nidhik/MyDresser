@@ -19,7 +19,7 @@ class ChooseOrSuggestTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        navigationItem.title = "Choose or Suggest"
+        navigationItem.title = "My Dresser"
         if let uniqueId = UserDefaults.standard.string(forKey: "userID"){
         userUniqueId = uniqueId
             print(uniqueId)
@@ -38,13 +38,14 @@ class ChooseOrSuggestTableViewController: UITableViewController {
         
         UserDefaults.standard.set(false, forKey: "loginStatus")
         //UserDefaults.standard.removeObject(forKey: "userID")
-        let InitialVc = self.storyboard?.instantiateViewController(withIdentifier: "InitialController")
-        let InitialNavigationVC = UINavigationController(rootViewController: InitialVc!)
+        if  let InitialVc = self.storyboard?.instantiateViewController(withIdentifier: "InitialController") {
+        let InitialNavigationVC = UINavigationController(rootViewController: InitialVc)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = InitialNavigationVC
          navigationController?.popToRootViewController(animated: true)
         }
-    
+
+}
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

@@ -10,6 +10,8 @@ import UIKit
 
 class PreviousTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var previousLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var topPreviousImage: UIImageView!
     @IBOutlet weak var bottomPreviousImage: UIImageView!
     

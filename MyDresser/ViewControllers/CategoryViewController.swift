@@ -13,20 +13,24 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var categoryChosen: UILabel!
     var chooseOrSuggest:String = ""
-    let categories = ["other","formal","casual","ethnic"]
+    let categories = ["Select the category","other","formal","casual","ethnic"]
     var userId: String = ""
     var newUser = false
+     var nextButton:UIBarButtonItem = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Select the category"
         categoryPicker.dataSource = self
         categoryPicker.delegate = self
+        let nextButton = UIBarButtonItem.init(title: "Next", style: .plain, target: self, action: #selector(nextAction))
+        self.navigationItem.setRightBarButtonItems([nextButton], animated: true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -53,28 +57,28 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.white])
     }
     
-
-    @IBAction func goToNext(_ sender: Any) {
+    func nextAction(){
+        
         if let category = categoryChosen.text {
-            if category != ""{
-            print("category is \(category)")
-            if chooseOrSuggest == "Choose my Attire"{
-                let previousOrNewTVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"PreviousOrNewController") as! PreviousOrNewTableViewController
-                if let choosedCategory = DressCategory(rawValue: category) {
-                    previousOrNewTVC.categoryOfDress = choosedCategory
+            if category != "" && category != "Select the category" {
+                print("category is \(category)")
+                if chooseOrSuggest == "Choose my Attire"{
+                    let previousOrNewTVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"PreviousOrNewController") as! PreviousOrNewTableViewController
+                    if let choosedCategory = DressCategory(rawValue: category) {
+                        previousOrNewTVC.categoryOfDress = choosedCategory
                     }
-                previousOrNewTVC.userId = self.userId
-                previousOrNewTVC.newUser = self.newUser
-                self.navigationController?.pushViewController(previousOrNewTVC, animated: true)
-            }
-            else if chooseOrSuggest == "Suggest Me Something"{
-                let suggestVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"SuggestController") as! SuggestViewController
-                if let choosedCategory = DressCategory(rawValue: category){
-                    suggestVC.categoryOfDress = choosedCategory
+                    previousOrNewTVC.userId = self.userId
+                    previousOrNewTVC.newUser = self.newUser
+                    self.navigationController?.pushViewController(previousOrNewTVC, animated: true)
                 }
-                suggestVC.userId = self.userId
-                suggestVC.newUser = self.newUser
-                self.navigationController?.pushViewController(suggestVC, animated: true)
+                else if chooseOrSuggest == "Suggest Me Something"{
+                    let suggestVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"SuggestController") as! SuggestViewController
+                    if let choosedCategory = DressCategory(rawValue: category){
+                        suggestVC.categoryOfDress = choosedCategory
+                    }
+                    suggestVC.userId = self.userId
+                    suggestVC.newUser = self.newUser
+                    self.navigationController?.pushViewController(suggestVC, animated: true)
                 }
             }
                 // if the category is not selected alert the user asking him to select the category

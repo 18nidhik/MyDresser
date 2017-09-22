@@ -8,12 +8,17 @@
 
 import UIKit
 import Photos
+import Vision
+import CoreML
+
 
 var keys :[Any] = []
 var detailsOfDresses:[[String: AnyObject]] = []
 
 class NewDressViewController: UIViewController, UIActionSheetDelegate{
     
+    @IBOutlet weak var dressLabel: UITextField!
+    @IBOutlet weak var profilePic: UIImageView!
     var userId: String = ""
     var categoryOfDress:DressCategory = .other
     var categoryOfPreviousDress :DressCategory = .other
@@ -23,30 +28,55 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
     var startAction = 0
     var downloadTopUrl:URL?
     var downloadBottomUrl:URL?
+    var fetchedProfilePicUrl: URL?
     var newUser = false
     let spinner1 = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     let spinner2 = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    let spinner3 = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     @IBOutlet weak var newTopImage: UIImageView!
     @IBOutlet weak var newBottomImage: UIImageView!
     let toptapGestureRecogniser = UITapGestureRecognizer()
     let bottomtapGestureRecogniser = UITapGestureRecognizer()
     let imagePicker = UIImagePickerController()
     var flag = 0    //To check if the image has to be set for top or bottom
-    let labelTop = UILabel(frame: CGRect(x: 60, y: 50, width: 300, height: 50))
-    let labelBottom = UILabel(frame: CGRect(x: 60, y: 50, width: 300, height: 50))
+    let labelTop = UILabel(frame: CGRect(x: 80, y: 50, width: 300, height: 50))
+    let labelBottom = UILabel(frame: CGRect(x: 80, y: 50, width: 300, height: 50))
+    var newDressOk:UIBarButtonItem = UIBarButtonItem()
+    var labelOfPreviousDress = ""
+    var labelOfDress = ""
+    var topKeywords = ["jersey, T-shirt, tee shirt","jersey", "T-shirt", "tee shirt","sweatshirt", "suit, suit of clothes","suit", "suit of clothes","velvet"]
+    var bottomKeywords = ["jean, blue jean, denim","jean","blue jean","denim","pajama, pyjama, pj\'s, jammies","pajama","pyjama","suit, suit of clothes","suit","suit of clothes"]
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         navigationItem.title = "New Dress"
+        profilePic.layer.cornerRadius = 60
+        profilePic.layer.masksToBounds = true
+        hideKeyboardWhenTappedAround()
+       // labelOfDress = dressLabel.text ?? ""
+        let newDressOk = UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(newDressOkAction))
+        self.navigationItem.setRightBarButtonItems([newDressOk], animated: true)
+        //profilePic.clipsToBounds = true
+        //profilePic.layoutIfNeeded()
+        startActivityIndicator(spinner: spinner3,newImage: profilePic, x: 30.0, y: 30.0, width: 60.0, height: 60.0)
+        FirebaseReference.sharedInstance.fetchProfilePicFromDatabase(userId: userId, callback: { (fetchedProfilePicUrl)->() in
+            FirebaseReference.sharedInstance.downloadImageFromFirebase(downloadUrl: fetchedProfilePicUrl,newImage :self.profilePic, callback:{() ->() in
+                self.stopActivityIndicator(spinner: self.spinner3)
+                print("profile pic done")
+            })
+            
+        })
+        
+        
         print(userId)
-        labelTop.text = "Tap to select the pic"
+        labelTop.text = "Tap to select the top pic"
         labelTop.textColor = UIColor.black
         if newTopImage.image == nil{
             newTopImage.addSubview(labelTop)
         }
         
-        labelBottom.text = "Tap to select the pic"
+        labelBottom.text = "Tap to select the bottom pic"
         labelBottom.textColor = UIColor.black
         if newBottomImage.image == nil{
             newBottomImage.addSubview(labelBottom)
@@ -58,8 +88,10 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
             startAction = 0
             downloadTopUrl = topUrl
             categoryOfDress = categoryOfPreviousDress
+            dressLabel.text = labelOfPreviousDress
             labelTop.isHidden = true
-            startActivityIndicator(spinner: spinner1,newImage: newTopImage)
+           // newTopImage.backgroundColor = nil
+            startActivityIndicator(spinner: spinner1,newImage: newTopImage,x: 140.0, y: 50.0, width: 60.0, height: 60.0)
             FirebaseReference.sharedInstance.downloadImageFromFirebase(downloadUrl: downloadTopUrl,newImage :newTopImage, callback:{() ->() in
                 self.stopActivityIndicator(spinner: self.spinner1)
                 print("top pic done")})
@@ -69,7 +101,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
         if let bottomUrl = bottomUrlOfPreviousDress{
             downloadBottomUrl = bottomUrl
             labelBottom.isHidden = true
-            startActivityIndicator(spinner: spinner2,newImage: newBottomImage)
+            startActivityIndicator(spinner: spinner2,newImage: newBottomImage, x: 140.0, y: 50.0, width: 60.0, height: 60.0)
             FirebaseReference.sharedInstance.downloadImageFromFirebase(downloadUrl: downloadBottomUrl,newImage :newBottomImage, callback:{() ->() in
                 self.stopActivityIndicator(spinner: self.spinner2)
                 print("bottom pic done")})
@@ -220,6 +252,17 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
         else if (status == PHAuthorizationStatus.denied) {
             self.noAccessFound()
         }
+        else if (status == PHAuthorizationStatus.notDetermined) {
+            
+            // Access has not been determined.
+            PHPhotoLibrary.requestAuthorization({ (newStatus) in
+                
+                if (newStatus == PHAuthorizationStatus.authorized) {
+                    }
+                else {
+                    }
+            })
+        }
     }
     
     // When the camera or gallery access is denied provide alert to the user to go to sttings and enable it
@@ -239,21 +282,23 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
     }
     
     //start spinner
-    func startActivityIndicator(spinner:UIActivityIndicatorView, newImage: UIImageView){
+    func startActivityIndicator(spinner:UIActivityIndicatorView, newImage: UIImageView, x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat){
         spinner.center = self.view.center
         spinner.hidesWhenStopped = true
         spinner.activityIndicatorViewStyle =  UIActivityIndicatorViewStyle.gray
-        spinner.frame = CGRect(x: 140.0, y: 70.0, width: 60.0, height: 60.0)
+        spinner.frame = CGRect(x: x, y: y, width: width, height: height)
         newImage.addSubview(spinner)
-        spinner.startAnimating()    }
+        spinner.startAnimating()
+        
+    }
     
     //stop spinner
     func stopActivityIndicator(spinner:UIActivityIndicatorView){
         spinner.stopAnimating()
     }
     
-    @IBAction func finaliseDressOK(_ sender: Any) {
-        
+    func newDressOkAction(){
+        labelOfDress = dressLabel.text ?? ""
         if newTopImage.image == nil && newBottomImage.image == nil{
             showAlertController(title:"No Image", message: "Select both top and bottom dresses!!", actionTitle: "OK")
         }
@@ -275,7 +320,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
                 print("Top just now saved in storage after this bottom should save")
                 FirebaseReference.sharedInstance.saveImageToStorage (userId: self.userId, newImage: self.newBottomImage,categoryOfDress: self.categoryOfDress,callback: { (downloadedBottomUrl) ->()  in
                     print("Bottom just now saved in storage after this fetch from database ")
-                    FirebaseReference.sharedInstance.fetchFromDataBaseAndSaveOrUpdate(userId: self.userId, categoryOfDress: self.categoryOfDress, downloadTopUrl :downloadedTopUrl,downloadBottomUrl: downloadedBottomUrl, callback:{
+                    FirebaseReference.sharedInstance.fetchFromDataBaseAndSaveOrUpdate(userId: self.userId, categoryOfDress: self.categoryOfDress, downloadTopUrl :downloadedTopUrl,downloadBottomUrl: downloadedBottomUrl,label: self.labelOfDress, callback:{
                         print("now fetched from database and saved or updated")
                     })
                 })
@@ -284,7 +329,7 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
         
         //startDatabase is 1 only if a previously worn dress is selected
         if startDatabase == 1{
-            FirebaseReference.sharedInstance.fetchFromDataBaseAndSaveOrUpdate(userId: self.userId, categoryOfDress: self.categoryOfDress, downloadTopUrl :downloadTopUrl,downloadBottomUrl: downloadBottomUrl, callback:{
+            FirebaseReference.sharedInstance.fetchFromDataBaseAndSaveOrUpdate(userId: self.userId, categoryOfDress: self.categoryOfDress, downloadTopUrl :downloadTopUrl,downloadBottomUrl: downloadBottomUrl,label: self.labelOfDress, callback:{
                 print("now fetched from database and saved or updated")
             })
         }
@@ -295,22 +340,124 @@ class NewDressViewController: UIViewController, UIActionSheetDelegate{
 // Image picker delegate methods
 extension NewDressViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+        var textFound : Bool = false
         guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         if flag == 1{
             labelTop.isHidden = true
-            newTopImage.image = selectedImage
+           // newTopImage.backgroundColor = nil
+           // newTopImage.image = selectedImage
+             print("processing")
+            startActivityIndicator(spinner: spinner1,newImage: newTopImage,x: 140.0, y: 50.0, width: 60.0, height: 60.0)
+         //   processImage((newTopImage.image?.cgImage!)!) { [weak self] text in
+            processImage((selectedImage.cgImage!)) { [weak self] text in
+                //self?.textView.text = text
+                print("received text from ml is \(text)")
+                for items in (self?.topKeywords)!{
+                    for value in text{
+                        if value == items{
+                            textFound = true
+                            print(value)
+                        }
+                    }
+                }
+                if textFound == true{
+                    print("matched")
+                    self?.stopActivityIndicator(spinner: (self?.spinner1)!)
+                    self?.newTopImage.image = selectedImage
+                }
+                else{
+                    print("not matched")
+                    self?.stopActivityIndicator(spinner: (self?.spinner1)!)
+                   self?.showAlertController(title:"Try Again" , message: "Enter the picture of Dress only", actionTitle: "OK")
+                    if self?.newTopImage.image == nil{
+                  //  self?.newTopImage.backgroundColor = UIColor.white
+                    self?.labelTop.isHidden = false
+                    }
+                }
+            }
         }
         else if flag == 2 {
             labelBottom.isHidden = true
-            newBottomImage.image = selectedImage
+          //  newBottomImage.image = selectedImage
+             print("processing")
+            startActivityIndicator(spinner: spinner2,newImage: newBottomImage,x: 140.0, y: 50.0, width: 60.0, height: 60.0)
+            processImage((selectedImage.cgImage!)) { [weak self] text in
+                //self?.textView.text = text
+                print("received text from ml is \(text)")
+                for items in (self?.bottomKeywords)!{
+                    for value in text{
+                        if value == items{
+                            textFound = true
+                            print(value)
+                        }
+                    }
+                }
+                if textFound == true{
+                    print("matched")
+                    self?.stopActivityIndicator(spinner: (self?.spinner2)!)
+                    self?.newBottomImage.image = selectedImage
+                }
+                else{
+                    print("not matched")
+                    self?.stopActivityIndicator(spinner: (self?.spinner2)!)
+                    self?.showAlertController(title:"Try Again" , message: "Enter the picture of dress only", actionTitle: "OK")
+                    if self?.newBottomImage.image == nil{
+                        self?.labelBottom.isHidden = false
+                    }
+                }
+            }
         }
-        dismiss(animated: true, completion: nil)
+       dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func processImage(_ image: CGImage, completion: @escaping ([String])->Void ){
+
+        DispatchQueue.global(qos: .background).async {
+
+            //Init Core Vision Model
+            if #available(iOS 11.0, *) {
+                guard let vnCoreModel = try? VNCoreMLModel(for: Inceptionv3().model) else { return }
+            //Init Core Vision Request
+            let request = VNCoreMLRequest(model: vnCoreModel) { (request, error) in
+                guard let results = request.results as? [VNClassificationObservation] else { fatalError("Failure") }
+                var text :[String] = []
+                var count = 0
+                for classification in results {
+                    count += 1
+                    if count < 11{
+                    text.append(classification.identifier)
+                    }
+                }
+//                  display all results
+//                for classification in results {
+//                    text.append("\n" + "\(classification.identifier, classification.confidence)")
+//                }
+
+                DispatchQueue.main.async {
+                    completion(text)
+                }
+            }
+            //Init Core Vision Request Handler
+            let handler = VNImageRequestHandler(cgImage: image)
+
+            //Perform Core Vision Request
+            do {
+                try handler.perform([request])
+            } catch {
+                print("did throw on performing a VNCoreRequest")
+            }
+        } else {
+            // Fallback on earlier versions
+                let keywords = self.topKeywords+self.bottomKeywords
+                completion(keywords)
+        }
+        }
+    }
+   
 }

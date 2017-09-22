@@ -15,6 +15,8 @@ class FirebaseReference{
     var databaseref : DatabaseReference?
     var storageRef: StorageReference?
     var downloadedUrl :URL?
+    var downloadProfilePicUrl: URL?
+    var sendProfilePicUrl: URL?
     var dbUpdateNumberOfTimesWorn = 0
     
     static let sharedInstance = FirebaseReference()
@@ -50,7 +52,7 @@ class FirebaseReference{
     }
     
     // fetch details from database to check if the image is already present in database.
-    func fetchFromDataBaseAndSaveOrUpdate(userId: String, categoryOfDress: DressCategory, downloadTopUrl :URL?,downloadBottomUrl: URL?,callback:@escaping ()->()){
+    func fetchFromDataBaseAndSaveOrUpdate(userId: String, categoryOfDress: DressCategory, downloadTopUrl :URL?,downloadBottomUrl: URL?,label: String,callback:@escaping ()->()){
         databaseref = Database.database().reference()
         var indexOfDress = -1  // To check if the details of dress is already present in database.
         detailsOfDresses = []
@@ -79,7 +81,7 @@ class FirebaseReference{
                 }
             }
             if indexOfDress == -1{
-                self.databaseref?.child(userId).childByAutoId().setValue(["top": downloadTopUrl?.absoluteString, "bottom": downloadBottomUrl?.absoluteString, "category": categoryOfDress.rawValue, "numberOfTimesWorn": 1 ])
+                self.databaseref?.child(userId).childByAutoId().setValue(["top": downloadTopUrl?.absoluteString, "bottom": downloadBottomUrl?.absoluteString, "category": categoryOfDress.rawValue, "numberOfTimesWorn": 1,"label":label ])
                 print("save now")
             }
             else{
@@ -87,6 +89,8 @@ class FirebaseReference{
                 self.dbUpdateNumberOfTimesWorn += 1
                 let childRef = self.databaseref?.child(userId).child(keys[indexOfDress] as! String)
                 childRef?.updateChildValues(["numberOfTimesWorn": self.dbUpdateNumberOfTimesWorn])
+                childRef?.updateChildValues(["label":label])
+                
             }
             callback()
         })
@@ -127,4 +131,58 @@ class FirebaseReference{
         callback()
         
     }
+    // Save the profile picture to databse
+    func saveProfileImageToStorage(userId: String, newImage: UIImageView, callback: @escaping (_ downloadedProfilePicUrl: URL?) ->()) {
+        storageRef = Storage.storage().reference()
+        var SaveSuccess = false
+        // save image of top in firebase
+        let tempImageRef = storageRef?.child("users").child(userId).child((NSUUID().uuidString))
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        var imageData: Data!
+        if let image = newImage.image {
+            imageData = UIImageJPEGRepresentation(image, 0.8)
+            tempImageRef?.putData(imageData, metadata: nil) { metadata, error in
+                if (error != nil) {
+                    print(error ?? "error")
+                } else {
+                    print("Upload successful")
+                    let downloadProfileURL = metadata!.downloadURL()!
+                    self.downloadProfilePicUrl = downloadProfileURL
+                    print("url of image downloaded is \(String(describing: self.downloadedUrl))")
+                    SaveSuccess = true
+                }
+                if SaveSuccess == true {
+                    print("call back just called")
+                    callback(self.downloadProfilePicUrl)
+                }
+            }
+        }
+    }
+    func updateProfilePicDetails(userId: String, downloadUrl: URL?,gender: String, callback:()->()){
+        databaseref = Database.database().reference()
+        self.databaseref?.child("users").child(userId).setValue(["profile": downloadUrl?.absoluteString, "Gender":gender ])
+        print("save dp now")
+        callback()
+    }
+    func fetchProfilePicFromDatabase(userId: String, callback: @escaping (_ sendProfilePicUrl: URL?)->()){
+        databaseref = Database.database().reference()
+        print("fetch profile pic funtion entered")
+        databaseref?.child("users").child(userId).observeSingleEvent(of: .value, with: {(snapshot) in
+            if let dictionary = snapshot.value as? NSDictionary {
+                for(key,value) in dictionary{
+                    print("THIS IS THE PART I WANT")
+                   print("\(key) is \(value)")
+                    if key as! String == "profile" {
+                        print("profile after if  is \(value)")
+                    self.sendProfilePicUrl = URL(string: value as! String)
+                        
+                    }
+                }
+            }
+            callback(self.sendProfilePicUrl)
+            
+        })
+    }
+
 }

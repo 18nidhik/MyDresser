@@ -14,6 +14,7 @@ class PreviousTableViewController: UITableViewController {
     var userId: String = ""
     var urlsOfTop :[URL] = []
     var urlsOfBottom :[URL] = []
+    var labelsOfDresses :[String] = []
     var newUser = false
     var numberOfDressesInTheCategorySelected = 0
     let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
@@ -21,8 +22,8 @@ class PreviousTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        navigationItem.title = "Previously worn"
-        startActivityIndicator()
+        navigationItem.title = "My Collection"
+       startActivityIndicator()
         FirebaseReference.sharedInstance.fetchDetailsFromDatabase(userId: userId, callback: {()->() in
             for dress in detailsOfDresses{
                 if dress["category"] as! String == self.categoryOfDress.rawValue{
@@ -42,7 +43,7 @@ class PreviousTableViewController: UITableViewController {
                 optionMenu.addAction(cantSuggest)
                 self.present(optionMenu, animated: true, completion: nil)
             }
-            
+             self.stopActivityIndicator()
             // get the URLs of top and bottom attire to display on the table view
             for values in detailsOfDresses{
                 if values["category"] as! String == self.categoryOfDress.rawValue{
@@ -52,6 +53,8 @@ class PreviousTableViewController: UITableViewController {
                     let bottomUrlString = values["bottom"] as! String
                     let bottomUrl = URL(string: bottomUrlString)
                     self.urlsOfBottom.append(bottomUrl!)
+                    let label = values["label"]
+                    self.labelsOfDresses.append(label as! String)
                 }
             }
             self.tableView.reloadData()
@@ -90,13 +93,17 @@ class PreviousTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousCell", for: indexPath) as? PreviousTableViewCell else{
             fatalError("The dequeued cell is not an instance of ChooseOrSuggestTableViewCell.")
         }
+        cell.activityIndicator.startAnimating()
         FirebaseReference.sharedInstance.downloadImageFromFirebase(downloadUrl: urlsOfTop[indexPath.row],newImage: cell.topPreviousImage, callback: {() ->() in
             print("top image")
         })
         FirebaseReference.sharedInstance.downloadImageFromFirebase(downloadUrl: urlsOfBottom[indexPath.row],newImage: cell.bottomPreviousImage, callback: {() ->() in
             print("bottom image")
+            cell.previousLabel.text = self.labelsOfDresses[indexPath.row]
+            cell.activityIndicator.stopAnimating()
         })
-        stopActivityIndicator()
+       cell.activityIndicator.hidesWhenStopped = true
+
         return cell
     }
     
@@ -108,6 +115,7 @@ class PreviousTableViewController: UITableViewController {
         newDressVC.categoryOfPreviousDress  = categoryOfDress
         newDressVC.topUrlOfPreviousDress = urlsOfTop[(indexPath?.row)!]
         newDressVC.bottomUrlOfPreviousDress = urlsOfBottom[(indexPath?.row)!]
+        newDressVC.labelOfPreviousDress = labelsOfDresses[(indexPath?.row)!]
         newDressVC.userId = self.userId
         newDressVC.newUser = self.newUser
         self.navigationController?.pushViewController(newDressVC, animated: true)

@@ -11,13 +11,13 @@ import UIKit
 class PreviousOrNewTableViewController: UITableViewController {
     
     var categoryOfDress:DressCategory = .other
-    var optionsToChoose = ["Select from previously worn dresses","Select a new dress"]
+    var optionsToChoose = ["Previously worn dresses","New dress"]
     var userId: String = ""
     var newUser = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Previously worn dress or new dress"
+        navigationItem.title = "Choose your preference"
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     

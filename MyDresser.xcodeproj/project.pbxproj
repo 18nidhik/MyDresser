@@ -32,7 +32,10 @@
 		C35274E71F696A7200011215 /* ChooseOrSuggestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274E41F696A7200011215 /* ChooseOrSuggestTableViewCell.swift */; };
 		C35274E81F696A7200011215 /* PreviousOrNewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274E51F696A7200011215 /* PreviousOrNewTableViewCell.swift */; };
 		C35274E91F696A7200011215 /* PreviousTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274E61F696A7200011215 /* PreviousTableViewCell.swift */; };
+		C37B768F1F713A2200BBEF78 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C37B768E1F713A2200BBEF78 /* Inceptionv3.mlmodel */; };
 		C38419241F697F61008A8C5B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38419231F697F61008A8C5B /* Utilities.swift */; };
+		C3B823DC1F72B68900437CC2 /* SuggestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B823DA1F72B68900437CC2 /* SuggestCollectionViewCell.swift */; };
+		C3B823DD1F72B68900437CC2 /* SuggestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B823DB1F72B68900437CC2 /* SuggestCollectionViewCell.xib */; };
 		CAED55853D2541D0B7A225DD /* Pods_MyDresser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F9BB7EFC5158496D9DA997 /* Pods_MyDresser.framework */; };
 		F64342DC2CECC43227B52E9A /* Pods_MyDresserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB2118E6D709F75683F0EEF /* Pods_MyDresserTests.framework */; };
 /* End PBXBuildFile section */
@@ -93,7 +96,10 @@
 		C35274E41F696A7200011215 /* ChooseOrSuggestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseOrSuggestTableViewCell.swift; sourceTree = "<group>"; };
 		C35274E51F696A7200011215 /* PreviousOrNewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousOrNewTableViewCell.swift; sourceTree = "<group>"; };
 		C35274E61F696A7200011215 /* PreviousTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousTableViewCell.swift; sourceTree = "<group>"; };
+		C37B768E1F713A2200BBEF78 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Inceptionv3.mlmodel; path = ../../Downloads/Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		C38419231F697F61008A8C5B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		C3B823DA1F72B68900437CC2 /* SuggestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestCollectionViewCell.swift; sourceTree = "<group>"; };
+		C3B823DB1F72B68900437CC2 /* SuggestCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestCollectionViewCell.xib; sourceTree = "<group>"; };
 		CBB2118E6D709F75683F0EEF /* Pods_MyDresserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDresserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -138,6 +144,7 @@
 		C309DD191F60210900936864 = {
 			isa = PBXGroup;
 			children = (
+				C37B768E1F713A2200BBEF78 /* Inceptionv3.mlmodel */,
 				C309DD241F60210900936864 /* MyDresser */,
 				C309DD3C1F60210900936864 /* MyDresserTests */,
 				C309DD471F60210900936864 /* MyDresserUITests */,
@@ -195,6 +202,7 @@
 		C35274CB1F69695000011215 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C3B823D91F72B68900437CC2 /* CollectionViewCell */,
 				C3417D361F6A694800722305 /* InitialViewController.swift */,
 				C35274CF1F69695000011215 /* LoginViewController.swift */,
 				C35274D31F69695000011215 /* SignupViewController.swift */,
@@ -229,6 +237,16 @@
 			);
 			path = View;
 			sourceTree = "<group>";
+		};
+		C3B823D91F72B68900437CC2 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C3B823DA1F72B68900437CC2 /* SuggestCollectionViewCell.swift */,
+				C3B823DB1F72B68900437CC2 /* SuggestCollectionViewCell.xib */,
+			);
+			name = CollectionViewCell;
+			path = MyDresser/CollectionViewCell;
+			sourceTree = SOURCE_ROOT;
 		};
 		FD1A3184D033434D27818497 /* Pods */ = {
 			isa = PBXGroup;
@@ -315,7 +333,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Shrinidhi K";
 				TargetAttributes = {
 					C309DD211F60210900936864 = {
@@ -361,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C309DD331F60210900936864 /* LaunchScreen.storyboard in Resources */,
+				C3B823DD1F72B68900437CC2 /* SuggestCollectionViewCell.xib in Resources */,
 				C34CA1681F6542F400150238 /* GoogleService-Info.plist in Resources */,
 				C309DD301F60210900936864 /* Assets.xcassets in Resources */,
 				C309DD2B1F60210900936864 /* Main.storyboard in Resources */,
@@ -549,6 +568,7 @@
 				C35274DB1F69695000011215 /* PreviousTableViewController.swift in Sources */,
 				C35232131F6A9EE300DC8491 /* Authentication.swift in Sources */,
 				C309DD2E1F60210900936864 /* MyDresser.xcdatamodeld in Sources */,
+				C37B768F1F713A2200BBEF78 /* Inceptionv3.mlmodel in Sources */,
 				C35274E91F696A7200011215 /* PreviousTableViewCell.swift in Sources */,
 				C35274D81F69695000011215 /* LoginViewController.swift in Sources */,
 				C35274D51F69695000011215 /* AttireOfTheDayViewController.swift in Sources */,
@@ -560,6 +580,7 @@
 				C35274DD1F69695000011215 /* SuggestViewController.swift in Sources */,
 				C35274DC1F69695000011215 /* SignupViewController.swift in Sources */,
 				C3417D371F6A694800722305 /* InitialViewController.swift in Sources */,
+				C3B823DC1F72B68900437CC2 /* SuggestCollectionViewCell.swift in Sources */,
 				C35274E21F6969F000011215 /* DressCategory.swift in Sources */,
 				C35274DA1F69695000011215 /* PreviousOrNewTableViewController.swift in Sources */,
 				C35274D61F69695000011215 /* CategoryViewController.swift in Sources */,
@@ -627,7 +648,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -635,7 +658,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -678,7 +705,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -686,7 +715,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
