@@ -19,18 +19,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="308" height="244"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="i28-14-dFE">
+                        <rect key="frame" x="144" y="112" width="20" height="20"/>
+                    </activityIndicatorView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C3d-mX-ckw">
                         <rect key="frame" x="50" y="0.0" width="208" height="122"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Ki-9k-sPc">
                         <rect key="frame" x="50" y="122" width="208" height="122"/>
                     </imageView>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="i28-14-dFE">
-                        <rect key="frame" x="136" y="104" width="37" height="37"/>
-                    </activityIndicatorView>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.2237455619" green="0.44355886839999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="8Ki-9k-sPc" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="AcX-3Z-Fmc"/>
                 <constraint firstItem="8Ki-9k-sPc" firstAttribute="top" secondItem="C3d-mX-ckw" secondAttribute="bottom" id="C7a-0A-TWy"/>
@@ -52,7 +51,7 @@
                 <outlet property="bottomImage" destination="8Ki-9k-sPc" id="CLI-Xu-Rdf"/>
                 <outlet property="topImage" destination="C3d-mX-ckw" id="CyR-aM-90a"/>
             </connections>
-            <point key="canvasLocation" x="172" y="137"/>
+            <point key="canvasLocation" x="141" y="166"/>
         </collectionViewCell>
     </objects>
 </document>

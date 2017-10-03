@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
         FirebaseApp.configure()
         let loginStatus = UserDefaults.standard.bool(forKey: "loginStatus")
         if loginStatus == true{
@@ -25,10 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("User previously logged in.")
             print(" users login status is \(loginStatus)")
             self.window = UIWindow(frame: UIScreen.main.bounds)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let chooseOrSuggestVC = storyboard.instantiateViewController(withIdentifier:"ChooseOrSuggestController" ) as! ChooseOrSuggestTableViewController
-            let navigationController = UINavigationController(rootViewController: chooseOrSuggestVC)
-            self.window?.rootViewController = navigationController
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let chooseOrSuggestVC = storyboard.instantiateViewController(withIdentifier:"ChooseOrSuggestController" ) as! ChooseOrSuggestTableViewController
+//            let navigationController = UINavigationController(rootViewController: chooseOrSuggestVC)
+//           self.window?.rootViewController = navigationController
+            let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarViewController
+            self.window?.rootViewController = tabBarVC
             self.window?.makeKeyAndVisible()
         }
         else{
@@ -38,8 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window = UIWindow(frame: UIScreen.main.bounds)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let initialViewController = storyboard.instantiateViewController(withIdentifier:"InitialController" ) as! InitialViewController
-            let navigationController = UINavigationController(rootViewController: initialViewController)
-            self.window?.rootViewController = navigationController
+           let navigationController = UINavigationController(rootViewController: initialViewController)
+           self.window?.rootViewController = navigationController
+//            let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialController") as! InitialViewController
+//            self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
         }
         return true

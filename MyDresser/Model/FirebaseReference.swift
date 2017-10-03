@@ -73,7 +73,7 @@ class FirebaseReference{
             // Check if the URL of the image is already present in database. If so, udate. If not save
             for(index,values) in detailsOfDresses.enumerated(){
                 if values["category"] as! String == categoryOfDress.rawValue{
-                    if values["top"] as! String == downloadTopUrl?.absoluteString && values["bottom"] as! String == downloadBottomUrl?.absoluteString{
+                    if values["top"] as? String == downloadTopUrl?.absoluteString && values["bottom"] as? String == downloadBottomUrl?.absoluteString{
                         self.dbUpdateNumberOfTimesWorn = values["numberOfTimesWorn"] as! Int
                         indexOfDress = index
                         print("index is \(indexOfDress)")
@@ -131,6 +131,7 @@ class FirebaseReference{
         callback()
         
     }
+    
     // Save the profile picture to databse
     func saveProfileImageToStorage(userId: String, newImage: UIImageView, callback: @escaping (_ downloadedProfilePicUrl: URL?) ->()) {
         storageRef = Storage.storage().reference()
@@ -159,12 +160,14 @@ class FirebaseReference{
             }
         }
     }
+    
     func updateProfilePicDetails(userId: String, downloadUrl: URL?,gender: String, callback:()->()){
         databaseref = Database.database().reference()
         self.databaseref?.child("users").child(userId).setValue(["profile": downloadUrl?.absoluteString, "Gender":gender ])
         print("save dp now")
         callback()
     }
+    
     func fetchProfilePicFromDatabase(userId: String, callback: @escaping (_ sendProfilePicUrl: URL?)->()){
         databaseref = Database.database().reference()
         print("fetch profile pic funtion entered")
@@ -176,13 +179,17 @@ class FirebaseReference{
                     if key as! String == "profile" {
                         print("profile after if  is \(value)")
                     self.sendProfilePicUrl = URL(string: value as! String)
-                        
                     }
                 }
             }
             callback(self.sendProfilePicUrl)
-            
-        })
+            })
     }
-
+    func updateProfilePicChanges(userId: String, updatedProfileImageUrl: URL?, callback: ()->()){
+        databaseref = Database.database().reference()
+        let childRef = databaseref?.child("users").child(userId)
+        childRef?.updateChildValues(["profile": updatedProfileImageUrl?.absoluteString])
+        callback()
+        
+    }
 }

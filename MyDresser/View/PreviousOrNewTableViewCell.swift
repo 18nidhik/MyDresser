@@ -14,6 +14,7 @@ class PreviousOrNewTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.previousOrNewLabel.textColor = UIColor(red: 202/255, green: 67/255, blue: 108/255, alpha: 1)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

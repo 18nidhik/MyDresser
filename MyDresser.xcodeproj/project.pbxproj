@@ -15,6 +15,7 @@
 		C309DD331F60210900936864 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C309DD311F60210900936864 /* LaunchScreen.storyboard */; };
 		C309DD3E1F60210900936864 /* MyDresserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309DD3D1F60210900936864 /* MyDresserTests.swift */; };
 		C309DD491F60210900936864 /* MyDresserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309DD481F60210900936864 /* MyDresserUITests.swift */; };
+		C31F867E1F7A69C600FEC124 /* ChangeCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F867D1F7A69C600FEC124 /* ChangeCredentials.swift */; };
 		C3417D351F6A49AA00722305 /* FirebaseReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3417D341F6A49AA00722305 /* FirebaseReference.swift */; };
 		C3417D371F6A694800722305 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3417D361F6A694800722305 /* InitialViewController.swift */; };
 		C34CA1681F6542F400150238 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C34CA1671F6542F400150238 /* GoogleService-Info.plist */; };
@@ -32,10 +33,16 @@
 		C35274E71F696A7200011215 /* ChooseOrSuggestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274E41F696A7200011215 /* ChooseOrSuggestTableViewCell.swift */; };
 		C35274E81F696A7200011215 /* PreviousOrNewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274E51F696A7200011215 /* PreviousOrNewTableViewCell.swift */; };
 		C35274E91F696A7200011215 /* PreviousTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35274E61F696A7200011215 /* PreviousTableViewCell.swift */; };
+		C364DECD1F7A00D500CF7805 /* ProfilePreviousTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C364DECC1F7A00D500CF7805 /* ProfilePreviousTableViewController.swift */; };
+		C364DECF1F7A00F600CF7805 /* ProfilePreviousTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C364DECE1F7A00F600CF7805 /* ProfilePreviousTableViewCell.swift */; };
+		C36927811F7937A20082187C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36927801F7937A20082187C /* ProfileViewController.swift */; };
+		C36927831F79380F0082187C /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36927821F79380F0082187C /* ProfileTableViewCell.swift */; };
 		C37B768F1F713A2200BBEF78 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C37B768E1F713A2200BBEF78 /* Inceptionv3.mlmodel */; };
 		C38419241F697F61008A8C5B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38419231F697F61008A8C5B /* Utilities.swift */; };
+		C385D0501F79068F00BB3E44 /* ImageViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385D04F1F79068F00BB3E44 /* ImageViewExtention.swift */; };
 		C3B823DC1F72B68900437CC2 /* SuggestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B823DA1F72B68900437CC2 /* SuggestCollectionViewCell.swift */; };
 		C3B823DD1F72B68900437CC2 /* SuggestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B823DB1F72B68900437CC2 /* SuggestCollectionViewCell.xib */; };
+		C3CA0C2D1F7D20D80015FC3F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA0C2C1F7D20D80015FC3F /* TabBarViewController.swift */; };
 		CAED55853D2541D0B7A225DD /* Pods_MyDresser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F9BB7EFC5158496D9DA997 /* Pods_MyDresser.framework */; };
 		F64342DC2CECC43227B52E9A /* Pods_MyDresserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB2118E6D709F75683F0EEF /* Pods_MyDresserTests.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +86,7 @@
 		C309DD441F60210900936864 /* MyDresserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDresserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C309DD481F60210900936864 /* MyDresserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDresserUITests.swift; sourceTree = "<group>"; };
 		C309DD4A1F60210900936864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C31F867D1F7A69C600FEC124 /* ChangeCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCredentials.swift; sourceTree = "<group>"; };
 		C3417D341F6A49AA00722305 /* FirebaseReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseReference.swift; sourceTree = "<group>"; };
 		C3417D361F6A694800722305 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		C34CA1671F6542F400150238 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -96,10 +104,16 @@
 		C35274E41F696A7200011215 /* ChooseOrSuggestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseOrSuggestTableViewCell.swift; sourceTree = "<group>"; };
 		C35274E51F696A7200011215 /* PreviousOrNewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousOrNewTableViewCell.swift; sourceTree = "<group>"; };
 		C35274E61F696A7200011215 /* PreviousTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousTableViewCell.swift; sourceTree = "<group>"; };
+		C364DECC1F7A00D500CF7805 /* ProfilePreviousTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePreviousTableViewController.swift; sourceTree = "<group>"; };
+		C364DECE1F7A00F600CF7805 /* ProfilePreviousTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePreviousTableViewCell.swift; sourceTree = "<group>"; };
+		C36927801F7937A20082187C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C36927821F79380F0082187C /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		C37B768E1F713A2200BBEF78 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Inceptionv3.mlmodel; path = ../../Downloads/Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		C38419231F697F61008A8C5B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		C385D04F1F79068F00BB3E44 /* ImageViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtention.swift; sourceTree = "<group>"; };
 		C3B823DA1F72B68900437CC2 /* SuggestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestCollectionViewCell.swift; sourceTree = "<group>"; };
 		C3B823DB1F72B68900437CC2 /* SuggestCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestCollectionViewCell.xib; sourceTree = "<group>"; };
+		C3CA0C2C1F7D20D80015FC3F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CBB2118E6D709F75683F0EEF /* Pods_MyDresserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDresserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -202,11 +216,14 @@
 		C35274CB1F69695000011215 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C3B823D91F72B68900437CC2 /* CollectionViewCell */,
 				C3417D361F6A694800722305 /* InitialViewController.swift */,
 				C35274CF1F69695000011215 /* LoginViewController.swift */,
 				C35274D31F69695000011215 /* SignupViewController.swift */,
+				C3CA0C2C1F7D20D80015FC3F /* TabBarViewController.swift */,
 				C35274CE1F69695000011215 /* ChooseOrSuggestTableViewController.swift */,
+				C36927801F7937A20082187C /* ProfileViewController.swift */,
+				C364DECC1F7A00D500CF7805 /* ProfilePreviousTableViewController.swift */,
+				C31F867D1F7A69C600FEC124 /* ChangeCredentials.swift */,
 				C35274CD1F69695000011215 /* CategoryViewController.swift */,
 				C35274D41F69695000011215 /* SuggestViewController.swift */,
 				C35274D11F69695000011215 /* PreviousOrNewTableViewController.swift */,
@@ -224,6 +241,7 @@
 				C38419231F697F61008A8C5B /* Utilities.swift */,
 				C3417D341F6A49AA00722305 /* FirebaseReference.swift */,
 				C35232121F6A9EE300DC8491 /* Authentication.swift */,
+				C385D04F1F79068F00BB3E44 /* ImageViewExtention.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,6 +249,9 @@
 		C35274E31F696A7200011215 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C3B823D91F72B68900437CC2 /* CollectionViewCell */,
+				C36927821F79380F0082187C /* ProfileTableViewCell.swift */,
+				C364DECE1F7A00F600CF7805 /* ProfilePreviousTableViewCell.swift */,
 				C35274E41F696A7200011215 /* ChooseOrSuggestTableViewCell.swift */,
 				C35274E51F696A7200011215 /* PreviousOrNewTableViewCell.swift */,
 				C35274E61F696A7200011215 /* PreviousTableViewCell.swift */,
@@ -245,7 +266,7 @@
 				C3B823DB1F72B68900437CC2 /* SuggestCollectionViewCell.xib */,
 			);
 			name = CollectionViewCell;
-			path = MyDresser/CollectionViewCell;
+			path = MyDresser/View/CollectionViewCell;
 			sourceTree = SOURCE_ROOT;
 		};
 		FD1A3184D033434D27818497 /* Pods */ = {
@@ -338,8 +359,8 @@
 				TargetAttributes = {
 					C309DD211F60210900936864 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = KG2TY33928;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 849UP4BSN8;
+						ProvisioningStyle = Manual;
 					};
 					C309DD381F60210900936864 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -567,16 +588,23 @@
 				C35274E71F696A7200011215 /* ChooseOrSuggestTableViewCell.swift in Sources */,
 				C35274DB1F69695000011215 /* PreviousTableViewController.swift in Sources */,
 				C35232131F6A9EE300DC8491 /* Authentication.swift in Sources */,
+				C3CA0C2D1F7D20D80015FC3F /* TabBarViewController.swift in Sources */,
 				C309DD2E1F60210900936864 /* MyDresser.xcdatamodeld in Sources */,
 				C37B768F1F713A2200BBEF78 /* Inceptionv3.mlmodel in Sources */,
 				C35274E91F696A7200011215 /* PreviousTableViewCell.swift in Sources */,
 				C35274D81F69695000011215 /* LoginViewController.swift in Sources */,
 				C35274D51F69695000011215 /* AttireOfTheDayViewController.swift in Sources */,
+				C36927831F79380F0082187C /* ProfileTableViewCell.swift in Sources */,
 				C35274D91F69695000011215 /* NewDressViewController.swift in Sources */,
+				C364DECD1F7A00D500CF7805 /* ProfilePreviousTableViewController.swift in Sources */,
+				C31F867E1F7A69C600FEC124 /* ChangeCredentials.swift in Sources */,
 				C35274D71F69695000011215 /* ChooseOrSuggestTableViewController.swift in Sources */,
 				C3417D351F6A49AA00722305 /* FirebaseReference.swift in Sources */,
+				C364DECF1F7A00F600CF7805 /* ProfilePreviousTableViewCell.swift in Sources */,
 				C38419241F697F61008A8C5B /* Utilities.swift in Sources */,
+				C385D0501F79068F00BB3E44 /* ImageViewExtention.swift in Sources */,
 				C309DD261F60210900936864 /* AppDelegate.swift in Sources */,
+				C36927811F7937A20082187C /* ProfileViewController.swift in Sources */,
 				C35274DD1F69695000011215 /* SuggestViewController.swift in Sources */,
 				C35274DC1F69695000011215 /* SignupViewController.swift in Sources */,
 				C3417D371F6A694800722305 /* InitialViewController.swift in Sources */,
@@ -752,14 +780,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = KG2TY33928;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 849UP4BSN8;
 				INFOPLIST_FILE = MyDresser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yml.MyDresser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ymedialabs.MyDresser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "47cc41c6-2b37-4545-bcc1-f0dc4901ebf6";
+				PROVISIONING_PROFILE_SPECIFIER = "IndiaDev*";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -772,14 +801,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = KG2TY33928;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 849UP4BSN8;
 				INFOPLIST_FILE = MyDresser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yml.MyDresser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ymedialabs.MyDresser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "47cc41c6-2b37-4545-bcc1-f0dc4901ebf6";
+				PROVISIONING_PROFILE_SPECIFIER = "IndiaDev*";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

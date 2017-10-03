@@ -9,28 +9,50 @@
 import UIKit
 
 class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-
+    
+    @IBOutlet weak var categoryNextButton: UIButton!
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var categoryChosen: UILabel!
     var chooseOrSuggest:String = ""
     let categories = ["Select the category","other","formal","casual","ethnic"]
     var userId: String = ""
     var newUser = false
-     var nextButton:UIBarButtonItem = UIBarButtonItem()
+    var gradientLayer: CAGradientLayer!
+    var userUniqueId: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Select the category"
+        navigationItem.title = "Category selection"
+        categoryNextButton.layer.cornerRadius = 10
+        categoryNextButton.layer.masksToBounds = true
+        // Set navigation bar image
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "whiteDownload") , for: .default)
+        // Set colour for navigation bar title
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 202/255, green: 67/255, blue: 108/255, alpha: 1)]
+        // Set colour for back button in navigation bar
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 202/255, green: 67/255, blue: 108/255, alpha: 1)
         categoryPicker.dataSource = self
         categoryPicker.delegate = self
-        let nextButton = UIBarButtonItem.init(title: "Next", style: .plain, target: self, action: #selector(nextAction))
-        self.navigationItem.setRightBarButtonItems([nextButton], animated: true)
+        gradientLayer = CAGradientLayer()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        createGradientLayer(view: self.view, gradientLayer: self.gradientLayer)
+    }
+    
+    override func willMove(toParentViewController parent: UIViewController?) {
+        super.willMove(toParentViewController: parent)
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "barImage") , for: .default)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -55,6 +77,10 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let string = categories[row]
         return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.white])
+    }
+    
+    @IBAction func categoryOk(_ sender: Any) {
+        nextAction()
     }
     
     func nextAction(){
@@ -83,7 +109,7 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
             }
                 // if the category is not selected alert the user asking him to select the category
             else{
-                showAlertController(title:"Select Category", message: "Select the category of the attire before you proceed", actionTitle: "OK")
+                showAlertController(title:"Error", message: "Select the category of the attire before you proceed", actionTitle: "OK")
             }
         }
     }
